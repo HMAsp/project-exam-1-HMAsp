@@ -8,10 +8,25 @@ async function fetchPosts() {
   return posts;
 }
 
-const testImg = document.querySelector(".test");
+const test = document.querySelector(".carouselContainer");
 
 function renderPost(post) {
   console.log(post);
+
+  const image = post.jetpack_featured_media_url;
+
+  const blogContainer = document.createElement("div");
+  blogContainer.classList.add("blogContainer");
+  blogContainer.style.backgroundImage = `url('${image}')`;
+  blogContainer.style.backgroundSize = "cover";
+  const title = document.createElement("h3");
+  title.style.alignSelf = "end";
+  title.style.backgroundColor = "var(--darkBg)";
+  title.style.padding = "0px 10px";
+  title.style.textTransform = "uppercase";
+  title.innerText = `"` + post.title.rendered + `"`;
+  blogContainer.append(title);
+  test.append(blogContainer);
 }
 
 function renderPosts(posts) {

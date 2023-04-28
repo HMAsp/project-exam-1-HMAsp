@@ -55,5 +55,19 @@ body {
 /* MAIN BODY */
 
 .carouselContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   color: var(--text);
+  max-width: 1000px;
+  margin: auto;
+}
+
+.blogContainer {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 295px;
+  border-radius: 25px;
 }
