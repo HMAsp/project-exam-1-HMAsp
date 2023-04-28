@@ -51,3 +51,9 @@ body {
   text-align: right;
   margin: 5px;
 }
+
+/* MAIN BODY */
+
+.carouselContainer {
+  color: var(--text);
+}
