@@ -1,0 +1,8 @@
+:root {
+  --darkBg: rgba(13, 19, 21, 1);
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: var(--darkBg);
+}
