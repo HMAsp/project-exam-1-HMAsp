@@ -12,6 +12,7 @@ const container = document.querySelector(".carouselContainer");
 const loaderInd = document.querySelector(".loader");
 const nextBtn = document.querySelector(".next");
 const previousBtn = document.querySelector(".previous");
+const enterBtn = document.querySelector("#enterBtn");
 
 function renderPost(post) {
   console.log("recent post:" + " " + post.slug);
@@ -34,6 +35,9 @@ function renderPost(post) {
   title.innerText = postTitle;
   blogContainer.append(title);
   container.append(blogContainer);
+  enterBtn.onclick = function () {
+    window.location.href = "/blog.html";
+  };
 
   blogContainer.onclick = function () {
     const modalContainer = document.createElement("div");
