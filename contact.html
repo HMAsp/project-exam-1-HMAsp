@@ -11,13 +11,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <script defer src="js/index.js"></script>
-    <title>Inside the trip | Home</title>
+    <link rel="stylesheet" href="css/aboutAndContact.css" />
+    <!-- <script defer src="js/index.js"></script> -->
+    <title>Inside the trip | CONTACT</title>
   </head>
   <body>
     <header>
-      <div class="header">
-        <div class="headerTitleContainer">
+      <div class="aboutHeader">
+        <div class="aboutHeaderTitleContainer">
           <div class="headerH1">
             <h1>"once upon a time"</h1>
             <h2>-Inside the trip</h2>
@@ -33,43 +34,32 @@
       </div>
     </header>
     <main>
-      <h3 class="recentPostTitle">Recent posts</h3>
-      <section class="mainContainer">
-        <img
-          class="previous"
-          src="images/previous_arrow.png"
-          alt="arrow button to navigate carousel"
-        />
-        <div class="carouselContainer"><span class="loader">Loading</span></div>
-        <img
-          class="next"
-          src="images/next_arrow.png"
-          alt="arrow button to navigate carousel"
-        />
-      </section>
-      <div class="welcometext">
-        <p>
-          Welcome to our travel website! We're a couple who loves to explore new
-          places and have adventures. On this site, we share our travel stories,
-          tips, and advice to inspire you to get out there and experience the
-          world. Whether you're a seasoned traveler or just starting out, we
-          hope you'll find something here to help you plan your next adventure.
-          Join us as we journey across the globe and discover all the incredible
-          experiences this world has to offer.
-        </p>
-        <button id="cta" class="cta">Go Inside</button>
-      </div>
-      <section class="modal">
-        <!-- <div class="modalContainer">
-          <div class="carouselModal">
-            <h1>test</h1>
-            <img
-              src="images/killian-pham-j0DrLBZH0nE-unsplash_mobile_header_text.png"
-              alt=""
-            />
+      <div class="aboutContainer">
+        <h3>contact us</h3>
+        <div class="formWrapper">
+          <div class="formText">
+            <p>
+              "Got a travel tip or suggestion? We'd love to hear from you! Share
+              your favorite destinations, hidden gems, or insider tips with us
+              through our contact form. Let's inspire each other to plan our
+              next adventure!"
+            </p>
           </div>
-        </div> -->
-      </section>
+          <!-- <div class="formContainer"> -->
+          <form class="formContainer" action="#">
+            <label for="name">full name</label>
+            <input name="name" type="text" id="name" />
+            <label for="email">email address</label>
+            <input name="email" type="text" id="email" />
+            <label for="subject">subject</label>
+            <input name="subject" type="text" id="subject" />
+            <label for="message">message</label>
+            <textarea name="message" id="msg" cols="30" rows="10"></textarea>
+            <input class="cta formBtn" name="btn" type="button" value="send" />
+          </form>
+          <!-- </div> -->
+        </div>
+      </div>
     </main>
     <footer>
       <div class="footerContainer">
