@@ -16,6 +16,7 @@ function renderPost(post) {
   loaderInd.style.display = "none";
   const image = post.jetpack_featured_media_url;
   const postTitle = `"` + post.title.rendered + `"`;
+  const excerpt = post.excerpt.rendered;
 
   const blogContainer = document.createElement("a");
   blogContainer.style.cursor = "pointer";
@@ -30,7 +31,7 @@ function renderPost(post) {
   blogContainer.append(pContainer);
 
   const descript = document.createElement("p");
-  descript.innerHTML = post.excerpt.rendered;
+  descript.innerHTML = excerpt;
 
   const title = document.createElement("h3");
   title.style.alignSelf = "end";
