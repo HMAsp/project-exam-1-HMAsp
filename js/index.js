@@ -1,3 +1,6 @@
+import { burgerFunction } from "./global/functions.js";
+burgerFunction();
+
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
 
 async function fetchPosts() {

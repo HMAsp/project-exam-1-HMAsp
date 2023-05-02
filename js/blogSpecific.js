@@ -1,3 +1,6 @@
+import { burgerFunction } from "./global/functions.js";
+burgerFunction();
+
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
