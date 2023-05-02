@@ -17,3 +17,21 @@ function burgerFunction() {
 }
 
 export { burgerFunction };
+
+function validateEmail(email) {
+  const regEx = /\S+@\S+\.\S+/;
+  const patternMatches = regEx.test(email);
+  return patternMatches;
+}
+
+export { validateEmail };
+
+function checkLength(value, len) {
+  if (value.length > len) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export { checkLength };

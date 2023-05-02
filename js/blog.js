@@ -1,3 +1,6 @@
+import { burgerFunction } from "./global/functions.js";
+burgerFunction();
+
 const blogListContainer = document.querySelector(".blogListContainer");
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
 const loaderInd = document.querySelector(".loader");
@@ -67,21 +70,3 @@ async function main() {
 }
 
 main();
-
-const burgerMenuBtn = document.querySelector("#hamburgerIcon");
-const burgerMenu = document.querySelector(".burgerMenu");
-
-burgerMenuBtn.addEventListener("click", function () {
-  console.log("CLICK");
-
-  document.querySelector(".burgerMenu").classList.toggle("active");
-});
-
-document.addEventListener("click", function (event) {
-  if (
-    !burgerMenu.contains(event.target) &&
-    !burgerMenuBtn.contains(event.target)
-  ) {
-    burgerMenu.classList.remove("active");
-  }
-});

@@ -50,7 +50,7 @@ body {
 }
 
 .formText {
-  max-width: 450px;
+  max-width: 420px;
   font-size: 1.25rem;
 }
 
@@ -63,6 +63,7 @@ body {
 
 .formContainer input {
   height: 40px;
+  font-size: 1.25rem;
 }
 
 .formContainer label {
