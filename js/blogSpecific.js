@@ -1,6 +1,8 @@
 import { burgerFunction } from "./global/functions.js";
 burgerFunction();
 import { formatDateString } from "./global/functions.js";
+import { subInput } from "./global/functions.js";
+subInput();
 
 const queryString = document.location.search;
 

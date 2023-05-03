@@ -441,7 +441,7 @@ figure img {
   max-width: 420px;
   height: 40px;
   text-indent: 40px;
-  font-size: 1.25rema;
+  font-size: 1.25rem;
 }
 
 .subInput::placeholder {
@@ -467,6 +467,7 @@ figure img {
   text-align: left;
   margin-left: 5px;
   transform: translateY(-390%);
+  width: fit-content;
 }
 
 .show {
