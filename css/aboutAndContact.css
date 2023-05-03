@@ -38,6 +38,10 @@ body {
   text-align: center;
 }
 
+.aboutContainer p {
+  line-height: 1.5;
+}
+
 /* CONTACT PAGE */
 
 .formWrapper {
@@ -59,13 +63,16 @@ body {
   min-width: 420px;
   flex-direction: column;
   gap: 15px;
-  font-family: "Source Sans Pro", sans-serif;
 }
 
 .formContainer input {
   height: 40px;
   font-size: 1.25rem;
   text-indent: 40px;
+}
+
+.formContainer textarea {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .formContainer label {
@@ -78,6 +85,7 @@ body {
 ::placeholder {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
+  font-style: italic;
 }
 
 .formMsg {

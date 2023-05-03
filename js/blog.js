@@ -1,15 +1,26 @@
 import { burgerFunction } from "./global/functions.js";
 burgerFunction();
+import { formatDateString } from "./global/functions.js";
+import { subInput } from "./global/functions.js";
+subInput();
 
-const blogListContainer = document.querySelector(".blogListContainer");
-const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
+const baseUrl = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
+const perPage = "?per_page=";
+const perPageNum = 10;
+const pageParam = "&page=";
+
+const defaultUrl = baseUrl + perPage + perPageNum;
+const loadMoreUrl = baseUrl + perPage + perPageNum + pageParam;
+
 const loaderInd = document.querySelector(".loader");
+const loadMoreCont = document.querySelector(".loadMoreImg");
 
 // FETCHES THE ARRAY
-async function fetchPosts() {
+async function fetchPosts(url) {
   const response = await fetch(url);
 
   const posts = await response.json();
+  console.log(url);
 
   return posts;
 }
@@ -22,6 +33,7 @@ function renderPost(post) {
   const image = post.jetpack_featured_media_url;
   const postTitle = `"` + post.title.rendered + `"`;
   const excerpt = post.excerpt.rendered;
+  const date = formatDateString(post.date);
 
   const blogContainer = document.createElement("a");
   blogContainer.style.cursor = "pointer";
@@ -43,7 +55,8 @@ function renderPost(post) {
   title.style.backgroundColor = "var(--darkBg)";
   title.style.padding = "0px 10px";
   title.style.textTransform = "uppercase";
-  title.innerText = postTitle;
+  title.style.textAlign = "center";
+  title.innerText = postTitle + " " + "-" + " " + date;
 
   const clickMore = document.createElement("p");
   clickMore.innerText = "Click to read..";
@@ -52,7 +65,11 @@ function renderPost(post) {
 
   pContainer.append(title);
   pContainer.append(descript);
-  blogListContainer.append(blogContainer);
+
+  // INJECTS CREATED CONTEND BEFORE EXISTING DIV IN HTML
+  loadMoreCont.insertAdjacentElement("beforebegin", blogContainer);
+
+  loadMoreCont.style.display = "flex";
 }
 
 // LOOPS THE FETCHED ARRAY AND RUNS FUNCTION TO CREATE POSTS FOR EVERY OBJECT
@@ -65,8 +82,27 @@ function renderPosts(posts) {
 
 // AWAITS FETCH AND RUNS LOOP FUNCTION
 async function main() {
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(defaultUrl);
   renderPosts(posts);
 }
 
 main();
+
+// LOADS MORE POSTS ON CLICKS BY ADDING PAGE PARAM TO URL.
+const loadMoreBtn = document.querySelector("#loadMoreBtn");
+let page = 1;
+
+loadMoreBtn.addEventListener("click", async function () {
+  page++;
+
+  const response = await fetchPosts(loadMoreUrl + page);
+  const post = await response;
+
+  renderPosts(post);
+
+  // CHECKS IF NEXT PAGE OF POSTS HAS BEEN LOADED AND REMOVES THE LOAD MORE BUTTON IF IT HAS. THIS TO PREVENT ERRORS TRYING TO LOAD NON-EXISTING PAGES
+  if (page === 2) {
+    loadMoreCont.style.display = "none";
+    return;
+  }
+});

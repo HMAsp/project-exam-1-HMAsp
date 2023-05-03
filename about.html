@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/aboutAndContact.css" />
-    <!-- <script defer src="js/index.js"></script> -->
+    <script defer src="js/about.js" type="module"></script>
     <title>Inside the trip | ABOUT</title>
   </head>
   <body>
@@ -113,7 +113,18 @@
             type="text"
             placeholder="Email address"
           />
-          <input class="subButton" type="button" value="Subscribe" />
+
+          <input
+            class="subButton"
+            for="subInput"
+            type="submit"
+            value="Subscribe"
+          />
+          <span class="subInputCheckmark"
+            ><img
+              src="images/carbon_checkmark-outline.png"
+              alt="checkmark symbol"
+          /></span>
         </div>
         <div class="letterBoxCont">
           <a href="contact.html"

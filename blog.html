@@ -53,13 +53,14 @@
     <main>
       <h3 class="blogPageTitle">blog posts</h3>
       <div class="carouselContainer"><span class="loader">Loading</span></div>
-      <div class="blogListContainer"></div>
-      <div class="loadMoreImg">
-        <img
-          id="loadMoreBtn"
-          src="images/loadMoreArrow.png"
-          alt="arrow shaped clickable to load more posts"
-        />
+      <div class="blogListContainer">
+        <div class="loadMoreImg">
+          <img
+            id="loadMoreBtn"
+            src="images/loadMoreArrow.png"
+            alt="arrow shaped clickable to load more posts"
+          />
+        </div>
       </div>
     </main>
     <footer>
@@ -75,10 +76,10 @@
           <div>
             <p>Pages:</p>
             <ul>
-              <li class="listItem"><a href="index.html">HOME</a></li>
-              <li class="listItem"><a href="blog.html">BLOG</a></li>
-              <li class="listItem"><a href="about.html">ABOUT US</a></li>
-              <li class="listItem"><a href="contact.html">CONTACT</a></li>
+              <li><a href="index.html">HOME</a></li>
+              <li><a href="blog.html">BLOG</a></li>
+              <li><a href="about.html">ABOUT US</a></li>
+              <li><a href="contact.html">CONTACT</a></li>
             </ul>
           </div>
         </div>
@@ -99,7 +100,18 @@
             type="text"
             placeholder="Email address"
           />
-          <input class="subButton" type="button" value="Subscribe" />
+
+          <input
+            class="subButton"
+            for="subInput"
+            type="submit"
+            value="Subscribe"
+          />
+          <span class="subInputCheckmark"
+            ><img
+              src="images/carbon_checkmark-outline.png"
+              alt="checkmark symbol"
+          /></span>
         </div>
         <div class="letterBoxCont">
           <a href="contact.html"

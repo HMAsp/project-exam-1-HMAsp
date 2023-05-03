@@ -2,9 +2,15 @@ import { burgerFunction } from "./global/functions.js";
 burgerFunction();
 
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
+const perPage = "?per_page=";
 
+let numberOfPosts = "8";
+
+const fullUrl = url + perPage + numberOfPosts;
+
+//FETCHES THE ARRAY. numberOfPosts VARIABLE SETS HOW MANY POSTS TO DISPLAY IN THE CAROUSEL
 async function fetchPosts() {
-  const response = await fetch(url);
+  const response = await fetch(fullUrl);
 
   const posts = await response.json();
 
@@ -17,6 +23,7 @@ const nextBtn = document.querySelector(".next");
 const previousBtn = document.querySelector(".previous");
 const enterBtn = document.querySelector("#enterBtn");
 
+// CREATES AND DISPLAYS THE CAROUSEL POSTS.
 function renderPost(post) {
   console.log("recent post:" + " " + post.slug);
 
@@ -42,6 +49,7 @@ function renderPost(post) {
     window.location.href = "/blog.html";
   };
 
+  // CREATES AND DISPLAYS THE MODAL WHEN POSTS ARE CLICKED AND CLOSES IT IF ANYTHING ELSE THAN THE BUTTON TO READ MORE IS CLICKED
   blogContainer.onclick = function () {
     const modalContainer = document.createElement("div");
     modalContainer.classList.add("modalContainer");
@@ -62,7 +70,7 @@ function renderPost(post) {
     btn.type = "button";
     btn.innerText = "Read more..";
     btn.onclick = function () {
-      window.location.href = `../#.html'${post.id}'`;
+      window.location.href = `../blogSpecific.html?id=${post.id}`;
     };
     carouselModal.append(btn);
     modalContainer.append(carouselModal);
@@ -74,14 +82,17 @@ function renderPost(post) {
   };
 }
 
+// NAVIGATES THE CAROUSEL SCROLL
 nextBtn.addEventListener("click", function () {
   container.scrollLeft += 230;
 });
 
+// NAVIGATES THE CAROUSEL SCROLL
 previousBtn.addEventListener("click", function () {
   container.scrollLeft += -230;
 });
 
+//LOOPS THROUGH THE ARRAY AND RUNS THE CREATION FUNCTION FOR EACH OF THE OBJECTS IN THE ARRAY
 function renderPosts(posts) {
   for (let i = 0; i < posts.length; i++) {
     const post = posts[i];
@@ -89,6 +100,7 @@ function renderPosts(posts) {
   }
 }
 
+//STARTS THE CHAIN OF FUNCTION EVENTS
 async function main() {
   const posts = await fetchPosts();
   renderPosts(posts);

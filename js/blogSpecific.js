@@ -1,5 +1,6 @@
 import { burgerFunction } from "./global/functions.js";
 burgerFunction();
+import { formatDateString } from "./global/functions.js";
 
 const queryString = document.location.search;
 
@@ -25,16 +26,27 @@ const setTitle = document.querySelector(".blogPageTitle");
 let loader = document.querySelector(".carouselContainer");
 
 function displayPost(post) {
+  // const date = formatDateString(rawDate);
+
   loader.innerHTML = "";
   const title = post.title.rendered;
+  const rawDate = post.date;
   const wpPost = post.content.rendered;
+  const date = formatDateString(rawDate);
+
   setTitle.innerText = title;
   setTitle.style.fontSize = "2rem";
   setTitle.style.letterSpacing = "5px";
   setTitle.style.textTransform = "uppercase";
 
+  const dateCont = document.createElement("h4");
+  dateCont.innerText = date;
+  dateCont.style.fontSize = "1.2rem";
+  dateCont.style.marginBottom = "-40px";
+  setTitle.append(dateCont);
+
   const postContainer = document.createElement("div");
-  postContainer.classList.add(".postContainer");
+  postContainer.classList.add("postContainer");
   postContainer.innerHTML = wpPost;
 
   container.append(postContainer);

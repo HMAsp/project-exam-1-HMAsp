@@ -286,17 +286,16 @@ a {
 }
 
 .loadMoreImg {
-  display: flex;
+  display: none;
   justify-content: center;
-}
-
-.loadMoreImg.hide {
-  display: "none";
+  height: 659.984px;
+  width: 300px;
 }
 
 .loadMoreImg img {
-  scale: 0.7;
+  scale: 0.8;
   cursor: pointer;
+  margin: auto;
 }
 
 /* BLOG DETAIL PAGE */
@@ -306,22 +305,21 @@ a {
   flex-direction: column;
   justify-content: center;
   color: var(--text);
-  padding: 30px;
-  margin: auto;
-}
 
-.blogDetailContainer img {
   margin: auto;
 }
 
 .postContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  padding: 40px;
+  line-height: 1.5;
+  max-width: 1080px;
+  margin: auto;
 }
+
 /* WORDPRESS CLASS ADJUSTMENTS */
-.wp-block-image {
-  text-align: center;
-}
 
 .wp-block-heading {
   text-align: center;
@@ -329,12 +327,86 @@ a {
 }
 
 figure {
-  /* max-height: 600px; */
+  width: 100%;
+  margin: auto;
 }
 
 figure img {
-  width: fit-content;
-  max-height: 600px;
+  display: flex;
+  justify-self: center;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+/* COMMENT SECTION */
+
+.commentContainer {
+  max-width: 780px;
+  min-width: 320px;
+  color: var(--text);
+  background-color: rgba(26, 38, 43, 1);
+  margin: auto;
+  margin-top: 100px;
+  letter-spacing: 2px;
+}
+
+.commentContHead {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+  text-transform: uppercase;
+  margin-bottom: -20px;
+}
+
+.addCommentBtn {
+  font-style: italic;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.commentBox {
+  max-width: 740px;
+  min-width: 320px;
+  min-height: 100px;
+  background-color: var(--darkBg);
+  margin: 20px;
+}
+
+.commentUserName {
+  padding: 10px 0px 0px 10px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.commentTime {
+  margin-top: 0;
+  margin-left: 30px;
+
+  font-size: 0.6rem;
+}
+
+.userComment {
+  padding: 0 40px;
+}
+
+.commentLiked {
+  display: flex;
+  align-content: center;
+  gap: 10px;
+  padding-left: 30px;
+  margin-top: -20px;
+}
+
+.likeHeart {
+  height: 18.35px;
+  width: 20px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.likeText {
+  text-transform: capitalize;
 }
 
 /* FOOTER */
@@ -353,6 +425,7 @@ figure img {
   color: var(--text);
   border-top: 0.5px solid white;
   border-radius: 25px 25px 0px 0px;
+  flex-wrap: wrap;
 }
 
 .subscribeText {
@@ -367,6 +440,8 @@ figure img {
 .subInput {
   max-width: 420px;
   height: 40px;
+  text-indent: 40px;
+  font-size: 1.25rema;
 }
 
 .subInput::placeholder {
@@ -385,6 +460,17 @@ figure img {
 
 .subButton:hover {
   cursor: pointer;
+}
+
+.subInputCheckmark {
+  display: none;
+  text-align: left;
+  margin-left: 5px;
+  transform: translateY(-390%);
+}
+
+.show {
+  display: block;
 }
 
 .letterBoxCont {
