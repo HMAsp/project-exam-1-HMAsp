@@ -20,7 +20,7 @@ function burgerFunction() {
 export { burgerFunction };
 
 // RUNS A EMAIL FORMAT VALIDATION FOR THE FOOTER SUBSCRIBE FIELD
-function subInput() {
+function subInputs() {
   const subInput = document.querySelector("#subInput");
   const subInputCheckmark = document.querySelector(".subInputCheckmark");
 
@@ -33,7 +33,7 @@ function subInput() {
   });
 }
 
-export { subInput };
+export { subInputs };
 
 // EMAIL FORMAT CHECKER
 function validateEmail(email) {
@@ -66,3 +66,26 @@ function formatDateString(apiDate) {
 }
 
 export { formatDateString };
+
+function preventSubDefaultReload() {
+  const subInput = document.querySelector(".subInput");
+  const subBtn = document.querySelector(".subButton");
+  subBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("Valid email address:", validateEmail(subInput.value));
+
+    if (validateEmail(subInput.value)) {
+      // POST EMAIL TO WP
+      subBtn.style.color = "lightgreen";
+      subBtn.value = "Subscribed";
+      subInput.value = "";
+      subInput.placeholder = "You have signed up for our newsletter";
+    } else {
+      subInput.placeholder = "Please provide valid email address";
+      subInput.value = "";
+      subBtn.style.color = "red";
+    }
+  });
+}
+
+export { preventSubDefaultReload };

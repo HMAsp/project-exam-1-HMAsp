@@ -1,7 +1,9 @@
 import { burgerFunction } from "./global/functions.js";
 import { validateEmail } from "./global/functions.js";
 import { checkLength } from "./global/functions.js";
+import { subInputs } from "./global/functions.js";
 
+subInputs();
 burgerFunction();
 
 const formContainer = document.querySelector(".formContainer");

@@ -1,8 +1,10 @@
 import { burgerFunction } from "./global/functions.js";
-burgerFunction();
 import { formatDateString } from "./global/functions.js";
-import { subInput } from "./global/functions.js";
-subInput();
+import { subInputs } from "./global/functions.js";
+import { preventSubDefaultReload } from "./global/functions.js";
+burgerFunction();
+subInputs();
+preventSubDefaultReload();
 
 const queryString = document.location.search;
 
@@ -62,3 +64,81 @@ async function mainFunction() {
 }
 
 mainFunction();
+
+//COMMENT SECTION OPEN-CLOSE
+
+const openComment = document.querySelector(".addCommentTextBtn");
+openComment.addEventListener("click", function (event) {
+  event.preventDefault();
+  const formField = document.querySelector(".addCommentForm");
+  formField.classList.toggle("showCommentForm");
+  openComment.innerText = "close comment";
+  if (!formField.classList.contains("showCommentForm")) {
+    openComment.innerText = "add comment";
+  }
+});
+
+// POSTING COMMENTS TO WP
+
+const postBtn = document.querySelector(".addCommentBtn");
+const postUrl =
+  "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/comments";
+
+postBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const nameInput = document.querySelector("#yourName");
+  const emailInput = document.querySelector("#yourEmail");
+  const commentInput = document.querySelector("#comment");
+  const authorName = nameInput.value;
+  const commentContent = commentInput.value;
+  const email = emailInput.value;
+  console.log(id);
+
+  const commentObject = {
+    post: id,
+    author_name: authorName,
+    author_email: email,
+    content: commentContent,
+  };
+
+  console.log(commentObject);
+
+  fetch(postUrl, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(commentObject),
+  })
+    .then(function (response) {
+      if (response.ok) {
+        // createCommentResponse();
+        return response.json();
+      } else {
+        throw new Error("Error creating comment");
+      }
+    })
+    .then(function (data) {
+      console.log("Comment created:", data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+});
+
+function createCommentResponse() {
+  const commentResponse = document.querySelector(".showCommentForm");
+  const formField = document.querySelector(".addCommentForm");
+
+  commentResponse.classList.remove(".showCommentForm");
+  formField.document.createElement("h5");
+  commentResponse.innerHTML = "Thank you for your comment!";
+}
+
+async function fetchComments() {
+  const response = await fetch(postUrl);
+  const commentData = await response.json();
+  console.log(commentData);
+}
+
+fetchComments();

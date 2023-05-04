@@ -1,8 +1,8 @@
 import { burgerFunction } from "./global/functions.js";
 burgerFunction();
 import { formatDateString } from "./global/functions.js";
-import { subInput } from "./global/functions.js";
-subInput();
+import { subInputs } from "./global/functions.js";
+subInputs();
 
 const baseUrl = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
 const perPage = "?per_page=";
