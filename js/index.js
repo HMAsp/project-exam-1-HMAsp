@@ -84,12 +84,12 @@ function renderPost(post) {
 
 // NAVIGATES THE CAROUSEL SCROLL
 nextBtn.addEventListener("click", function () {
-  container.scrollLeft += 230;
+  container.scrollLeft += 205;
 });
 
 // NAVIGATES THE CAROUSEL SCROLL
 previousBtn.addEventListener("click", function () {
-  container.scrollLeft += -230;
+  container.scrollLeft += -205;
 });
 
 //LOOPS THROUGH THE ARRAY AND RUNS THE CREATION FUNCTION FOR EACH OF THE OBJECTS IN THE ARRAY

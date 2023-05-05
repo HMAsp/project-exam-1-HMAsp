@@ -1,7 +1,8 @@
-import { burgerFunction } from "./global/functions.js";
+import { burgerFunction, validateEmail } from "./global/functions.js";
 import { formatDateString } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
+
 burgerFunction();
 subInputs();
 preventSubDefaultReload();
@@ -58,7 +59,7 @@ function displayPost(post) {
 
 async function mainFunction() {
   const post = await fetchSinglePost();
-  console.log(post);
+  // console.log(post);
 
   displayPost(post);
 }
@@ -84,8 +85,16 @@ const postBtn = document.querySelector(".addCommentBtn");
 const postUrl =
   "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/comments";
 
-postBtn.addEventListener("click", function (event) {
-  event.preventDefault();
+// const nameInput = document.querySelector("#yourName");
+// const emailInput = document.querySelector("#yourEmail");
+// const commentInput = document.querySelector("#comment");
+// const authorName = nameInput.value;
+// const commentContent = commentInput.value;
+// const email = emailInput.value;
+
+async function createComment() {
+  const formField = document.querySelector(".addCommentForm");
+
   const nameInput = document.querySelector("#yourName");
   const emailInput = document.querySelector("#yourEmail");
   const commentInput = document.querySelector("#comment");
@@ -111,8 +120,8 @@ postBtn.addEventListener("click", function (event) {
     body: JSON.stringify(commentObject),
   })
     .then(function (response) {
-      if (response.ok) {
-        // createCommentResponse();
+      if (response.ok && validateEmail(email)) {
+        formField.innerHTML = `<h5 class="commentThanks">Thank you for leaving a comment</h5>`;
         return response.json();
       } else {
         throw new Error("Error creating comment");
@@ -124,21 +133,88 @@ postBtn.addEventListener("click", function (event) {
     .catch(function (error) {
       console.error(error);
     });
+}
+
+postBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  createComment();
 });
 
-function createCommentResponse() {
-  const commentResponse = document.querySelector(".showCommentForm");
-  const formField = document.querySelector(".addCommentForm");
+// DISPLAY COMMENTS IN BOXES
 
-  commentResponse.classList.remove(".showCommentForm");
-  formField.document.createElement("h5");
-  commentResponse.innerHTML = "Thank you for your comment!";
-}
+const commentContainer = document.querySelector(".commentContainer");
 
 async function fetchComments() {
   const response = await fetch(postUrl);
-  const commentData = await response.json();
-  console.log(commentData);
+  const comments = await response.json();
+
+  return comments;
 }
 
-fetchComments();
+function displayComment(comment) {
+  if (comment.post == id) {
+    console.log("Post matches ID:", comment.post);
+
+    const commentBox = document.createElement("div");
+    commentBox.classList.add("commentBox");
+
+    const commentName = document.createElement("h5");
+    commentName.classList.add("commentUserName");
+    commentName.innerText = comment.author_name;
+
+    const commentTime = document.createElement("span");
+    commentTime.classList.add("commentTime");
+    commentTime.innerText = comment.date;
+
+    const userComment = document.createElement("p");
+    userComment.classList.add("userComment");
+    userComment.innerHTML = comment.content.rendered;
+
+    const commentLikes = document.createElement("div");
+    commentLikes.classList.add("commentLikes");
+
+    const commentLiked = document.createElement("commentLiked");
+    commentLiked.classList.add("commentLiked");
+
+    const likeImg = document.createElement("img");
+    likeImg.classList.add("likeHeart");
+    likeImg.src = "/images/likeHeart.png";
+    likeImg.alt = "heart outline icon";
+    const likeText = document.createElement("p");
+    likeText.classList.add("likeText");
+    likeText.innerText = "Like";
+
+    commentBox.append(commentName);
+    commentBox.append(commentTime);
+    commentBox.append(userComment);
+
+    commentLiked.append(likeImg);
+    commentLiked.append(likeText);
+
+    commentLikes.append(commentLiked);
+    commentContainer.append(commentBox);
+    commentContainer.append(commentLiked);
+
+    // awaitFetchComments();
+  }
+}
+
+function displayComments(comments) {
+  for (let i = 0; i < comments.length; i++) {
+    const comment = comments[i];
+    console.log(comment);
+    displayComment(comment);
+    // if (comment.contains(id)) {
+    //   displayComment(comment);
+    // }
+    // displayComment(comment);
+  }
+}
+
+async function awaitFetchComments() {
+  const data = await fetchComments();
+
+  displayComments(data);
+}
+
+awaitFetchComments();

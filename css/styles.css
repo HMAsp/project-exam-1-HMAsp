@@ -157,14 +157,14 @@ a {
 
 .mainContainer {
   display: flex;
-  max-width: 1000px;
+  max-width: 960px;
   margin: auto;
 }
 
 .next,
 .previous {
   align-self: center;
-  padding: 20px 0px;
+  padding: 20px 10px;
 }
 
 .next:hover,
@@ -178,12 +178,12 @@ a {
 .carouselContainer {
   display: flex;
   overflow-x: hidden;
-
   scroll-behavior: smooth;
-  gap: 30px;
+  gap: 10px;
   color: var(--text);
   max-width: 900px;
   margin: auto;
+  /* margin-left: 10px; */
 }
 
 .blogContainer {
@@ -497,6 +497,22 @@ figure img {
 
 .likeText {
   text-transform: capitalize;
+}
+
+.required {
+  font-weight: 300;
+  font-size: 0.8rem;
+  /* font-style: italic; */
+}
+
+.commentThanks {
+  text-align: center;
+  font-weight: 300;
+  font-size: 1.25rem;
+  width: 320px;
+  margin: auto;
+  padding: 5px 0px;
+  margin-bottom: -100px;
 }
 
 /* FOOTER */
