@@ -31,8 +31,6 @@ const setTitle = document.querySelector(".blogPageTitle");
 let loader = document.querySelector(".carouselContainer");
 
 function displayPost(post) {
-  // const date = formatDateString(rawDate);
-
   loader.innerHTML = "";
   const title = post.title.rendered;
   const rawDate = post.date;
@@ -85,16 +83,8 @@ const postBtn = document.querySelector(".addCommentBtn");
 const postUrl =
   "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/comments";
 
-// const nameInput = document.querySelector("#yourName");
-// const emailInput = document.querySelector("#yourEmail");
-// const commentInput = document.querySelector("#comment");
-// const authorName = nameInput.value;
-// const commentContent = commentInput.value;
-// const email = emailInput.value;
-
 async function createComment() {
   const formField = document.querySelector(".addCommentForm");
-
   const nameInput = document.querySelector("#yourName");
   const emailInput = document.querySelector("#yourEmail");
   const commentInput = document.querySelector("#comment");
@@ -124,6 +114,7 @@ async function createComment() {
         formField.innerHTML = `<h5 class="commentThanks">Thank you for leaving a comment</h5>`;
         return response.json();
       } else {
+        formErrorHandler();
         throw new Error("Error creating comment");
       }
     })
@@ -139,6 +130,28 @@ postBtn.addEventListener("click", function (event) {
   event.preventDefault();
   createComment();
 });
+
+function formErrorHandler() {
+  const nameInput = document.querySelector("#yourName");
+  const emailInput = document.querySelector("#yourEmail");
+  const commentInput = document.querySelector("#comment");
+  const formError = document.querySelector(".commentErrorMessage");
+
+  if (nameInput.value == "") {
+    (formError.innerText = "Please provide your name"),
+      (formError.style.display = "flex");
+  }
+
+  if (!validateEmail(emailInput.value)) {
+    (formError.innerText = "Please check that your email is correct"),
+      (formError.style.display = "flex");
+  }
+
+  if (commentInput.value == "") {
+    (formError.innerText = "Please write a comment"),
+      (formError.style.display = "flex");
+  }
+}
 
 // DISPLAY COMMENTS IN BOXES
 
@@ -164,7 +177,8 @@ function displayComment(comment) {
 
     const commentTime = document.createElement("span");
     commentTime.classList.add("commentTime");
-    commentTime.innerText = comment.date;
+    const commentTimeFormatted = formatDateString(comment.date);
+    commentTime.innerText = commentTimeFormatted;
 
     const userComment = document.createElement("p");
     userComment.classList.add("userComment");
@@ -178,11 +192,11 @@ function displayComment(comment) {
 
     const likeImg = document.createElement("img");
     likeImg.classList.add("likeHeart");
-    likeImg.src = "/images/likeHeart.png";
+    likeImg.src = "/images/like_red_heart.png";
     likeImg.alt = "heart outline icon";
     const likeText = document.createElement("p");
     likeText.classList.add("likeText");
-    likeText.innerText = "Like";
+    likeText.innerText = "Liked";
 
     commentBox.append(commentName);
     commentBox.append(commentTime);
@@ -202,7 +216,8 @@ function displayComment(comment) {
 function displayComments(comments) {
   for (let i = 0; i < comments.length; i++) {
     const comment = comments[i];
-    console.log(comment);
+    // console.log(comment);
+
     displayComment(comment);
     // if (comment.contains(id)) {
     //   displayComment(comment);

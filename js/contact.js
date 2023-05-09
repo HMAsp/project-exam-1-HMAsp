@@ -66,8 +66,11 @@ function validateForm() {
     checkLength(message.value, 25)
   ) {
     console.log("Validation success");
+    postFormData();
+    return true;
   } else {
     console.log("Incomplete");
+    return false;
   }
 }
 
@@ -75,3 +78,42 @@ formBtn.addEventListener("click", function (event) {
   validateForm();
   event.preventDefault();
 });
+
+function postFormData() {
+  const formData = new FormData(formContainer);
+  const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
+  fetch(url, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: "Basic" + btoa("testUser:sakZxhpQ^86mFnxcp)fQGyTH"),
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("Form saved:", data);
+    })
+    .catch(function (error) {
+      console.error(("Error:", error));
+    });
+}
+
+// formContainer.addEventListener("submit", function () {
+//   const formData = new FormData(formContainer);
+//   const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts/";
+//   fetch(url, {
+//     method: "POST",
+//     body: formData,
+//   })
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log("Form saved:", data);
+//     })
+//     .catch(function (error) {
+//       console.error(("Error:", error));
+//     });
+// });

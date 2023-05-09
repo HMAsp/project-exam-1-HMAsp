@@ -40,6 +40,8 @@ body {
 
 .aboutContainer p {
   line-height: 1.5;
+  min-width: 310px;
+  margin: 10px;
 }
 
 /* CONTACT PAGE */
@@ -48,7 +50,6 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 1080px;
   padding: 50px;
   gap: 30px;
 }
@@ -60,9 +61,9 @@ body {
 
 .formContainer {
   display: flex;
-  min-width: 420px;
   flex-direction: column;
   gap: 15px;
+  flex: 1;
 }
 
 .formContainer input {
@@ -129,6 +130,7 @@ body {
   margin-top: 20px;
   width: 170px;
   height: 40px;
+  line-height: 0;
 }
 
 input:-webkit-autofill {
