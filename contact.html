@@ -53,6 +53,15 @@
     </header>
     <main>
       <div class="aboutContainer">
+        <div class="confirmationCont">
+          <dialog class="confirmationDisplay">
+            <p>
+              We have recieved your message and will get back to you as soon as
+              possible.
+            </p>
+          </dialog>
+        </div>
+
         <h3>contact us</h3>
         <div class="formWrapper">
           <div class="formText">
@@ -64,9 +73,9 @@
             </p>
           </div>
           <form class="formContainer" action="post">
-            <label for="name">full name</label>
+            <label for="your-name">full name</label>
             <input
-              name="name"
+              name="your-name"
               type="text"
               id="name"
               placeholder="Enter full name"
@@ -76,9 +85,9 @@
                 src="images/carbon_checkmark-outline.png"
                 alt="checkmark symbol"
             /></span>
-            <label for="email">email address</label>
+            <label for="your-email">email address</label>
             <input
-              name="email"
+              name="your-email"
               type="text"
               id="email"
               placeholder="Enter email address"
@@ -88,9 +97,9 @@
                 src="images/carbon_checkmark-outline.png"
                 alt="checkmark symbol"
             /></span>
-            <label for="subject">subject</label>
+            <label for="your-subject">subject</label>
             <input
-              name="subject"
+              name="your-subject"
               type="text"
               id="subject"
               placeholder="Enter subject"
@@ -100,10 +109,10 @@
                 src="images/carbon_checkmark-outline.png"
                 alt="checkmark symbol"
             /></span>
-            <label for="message">message</label>
+            <label for="your-message">message</label>
             <textarea
               class="formMsg"
-              name="message"
+              name="your-message"
               id="msg"
               cols="30"
               rows="10"

@@ -74,6 +74,8 @@ a {
 
 .burgerMenu {
   display: none;
+  position: relative;
+  z-index: -1;
   justify-content: center;
   align-content: left;
   flex-direction: column;
@@ -83,13 +85,17 @@ a {
   border-radius: 25px;
   transform: translateX(105%);
   transition: transform 0.3s ease-in;
+  margin-top: -235px;
 }
 
 .burgerMenu.active {
+  display: block;
+  position: relative;
   transform: translateX(0%);
   transition: transform 0.4s ease-out;
   display: flex;
   margin-top: -235px;
+  z-index: 4;
 }
 
 .burgerMenu h3 {
@@ -336,6 +342,55 @@ a {
   margin: auto;
 }
 
+.galleryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1260px;
+  margin: 50px auto;
+}
+
+.galleryContainer img {
+  width: 250px;
+  height: 375px;
+  cursor: pointer;
+}
+
+.galleryContainer img:hover {
+  scale: 1.2;
+  box-shadow: 2px 2px 10px black;
+}
+
+.modalCont {
+  position: fixed;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
+  padding: 0;
+  box-shadow: 2px 2px 10px black;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.blogModal {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border: 0;
+  padding: 0;
+  box-shadow: 2px 2px 10px black;
+  z-index: 100;
+  margin-top: 150px;
+}
+
+.blogModal img {
+  width: 100%;
+}
+
 /* WORDPRESS CLASS ADJUSTMENTS */
 
 .wp-block-heading {
@@ -473,7 +528,7 @@ figure img {
 
 .commentBox {
   max-width: 740px;
-  min-width: 320px;
+  /* min-width: 320px; */
   min-height: 100px;
   background-color: var(--darkBg);
   margin: 20px;

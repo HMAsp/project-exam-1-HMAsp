@@ -2,9 +2,11 @@ import { burgerFunction } from "./global/functions.js";
 import { validateEmail } from "./global/functions.js";
 import { checkLength } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
+import { preventSubDefaultReload } from "./global/functions.js";
 
 subInputs();
 burgerFunction();
+preventSubDefaultReload();
 
 const formContainer = document.querySelector(".formContainer");
 const fullName = document.querySelector("#name");
@@ -66,7 +68,7 @@ function validateForm() {
     checkLength(message.value, 25)
   ) {
     console.log("Validation success");
-    postFormData();
+    // postFormData();
     return true;
   } else {
     console.log("Incomplete");
@@ -75,19 +77,21 @@ function validateForm() {
 }
 
 formBtn.addEventListener("click", function (event) {
-  validateForm();
+  if (validateForm()) {
+    postFormData();
+  }
   event.preventDefault();
 });
 
 function postFormData() {
+  const formId = "130";
+  const url = `https://codewithspooks.com/insidethetrip/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
+
   const formData = new FormData(formContainer);
-  const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
+
   fetch(url, {
     method: "POST",
     body: formData,
-    headers: {
-      Authorization: "Basic" + btoa("testUser:sakZxhpQ^86mFnxcp)fQGyTH"),
-    },
   })
     .then(function (response) {
       return response.json();

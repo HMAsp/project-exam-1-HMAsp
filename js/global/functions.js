@@ -76,6 +76,8 @@ function preventSubDefaultReload() {
 
     if (validateEmail(subInput.value)) {
       // POST EMAIL TO WP
+
+      postFormData(subInput.value);
       subBtn.style.color = "lightgreen";
       subBtn.value = "Subscribed";
       subInput.value = "";
@@ -89,3 +91,45 @@ function preventSubDefaultReload() {
 }
 
 export { preventSubDefaultReload };
+
+// GRABBING IMG ELEMENTS FROM ARRAY
+function pictureGrabber(post) {
+  const tempImageContainer = document.createElement("div");
+  tempImageContainer.innerHTML = post;
+
+  const postImages = tempImageContainer.getElementsByTagName("img");
+
+  const imgUrls = [];
+  for (let i = 0; i < postImages.length; i++) {
+    const imgUrl = postImages[i].src;
+    imgUrls.push(imgUrl);
+  }
+  return imgUrls;
+}
+
+export { pictureGrabber };
+
+// POSTS EMAIL ADDRESS TO WP BACKEND TO NEWSLETTER FORM FROM THE FOOTER
+function postFormData(input) {
+  const formId = "139";
+  const url = `https://codewithspooks.com/insidethetrip/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
+
+  const formData = new FormData();
+  formData.append("your-name", "Newsletter");
+  formData.append("your-email", input);
+  formData.append("your-subject", "Please send me the newsletter");
+
+  fetch(url, {
+    method: "POST",
+    body: formData,
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("Form saved:", data);
+    })
+    .catch(function (error) {
+      console.error(("Error:", error));
+    });
+}

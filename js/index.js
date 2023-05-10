@@ -1,5 +1,7 @@
 import { burgerFunction } from "./global/functions.js";
+import { preventSubDefaultReload } from "./global/functions.js";
 burgerFunction();
+preventSubDefaultReload();
 
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
 const perPage = "?per_page=";
@@ -76,9 +78,14 @@ function renderPost(post) {
     modalContainer.append(carouselModal);
     modal.append(modalContainer);
 
-    modal.onclick = function () {
-      modal.innerHTML = "";
-    };
+    modalContainer.addEventListener("click", function (event) {
+      if (
+        !carouselModal.contains(event.target) &&
+        !btn.contains(event.target)
+      ) {
+        modal.innerHTML = "";
+      }
+    });
   };
 }
 

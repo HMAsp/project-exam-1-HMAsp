@@ -2,6 +2,7 @@ import { burgerFunction, validateEmail } from "./global/functions.js";
 import { formatDateString } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
+import { pictureGrabber } from "./global/functions.js";
 
 burgerFunction();
 subInputs();
@@ -37,6 +38,11 @@ function displayPost(post) {
   const wpPost = post.content.rendered;
   const date = formatDateString(rawDate);
 
+  const mediaGalleryArray = pictureGrabber(wpPost);
+  console.log(mediaGalleryArray);
+
+  document.title = "Inside the trip:" + " " + title.toLocaleUpperCase();
+
   setTitle.innerText = title;
   setTitle.style.fontSize = "2rem";
   setTitle.style.letterSpacing = "5px";
@@ -48,9 +54,51 @@ function displayPost(post) {
   dateCont.style.marginBottom = "-40px";
   setTitle.append(dateCont);
 
+  const galleryContainer = document.createElement("div");
+  galleryContainer.classList.add("galleryContainer");
+
+  // RUNS A CREATE IMG FOR EACH OF THE URLS IN THE GALLERY ARRAY AND APPENDS IT TO THE CONTAINER
+  mediaGalleryArray.forEach(function (imageUrl) {
+    const image = document.createElement("img");
+    image.src = imageUrl;
+    galleryContainer.append(image);
+
+    image.addEventListener("click", function () {
+      const modalCont = document.createElement("div");
+      modalCont.classList.add("modalCont");
+
+      const blogModal = document.createElement("dialog");
+      blogModal.classList.add("blogModal");
+
+      const imgClone = image.cloneNode(true);
+
+      blogModal.append(imgClone);
+      container.append(modalCont);
+      modalCont.append(blogModal);
+
+      modalCont.addEventListener("click", function (event) {
+        if (
+          !blogModal.contains(event.target) &&
+          !image.contains(event.target)
+        ) {
+          blogModal.remove();
+          modalCont.remove();
+        }
+      });
+    });
+  });
+
+  container.append(galleryContainer);
+
   const postContainer = document.createElement("div");
   postContainer.classList.add("postContainer");
   postContainer.innerHTML = wpPost;
+
+  // REMOVES FIGURES/IMAGES EMBEDDED IN POST
+  const figures = postContainer.querySelectorAll("figure");
+  figures.forEach(function (figure) {
+    figure.remove();
+  });
 
   container.append(postContainer);
 }
@@ -112,6 +160,7 @@ async function createComment() {
     .then(function (response) {
       if (response.ok && validateEmail(email)) {
         formField.innerHTML = `<h5 class="commentThanks">Thank you for leaving a comment</h5>`;
+        reloadComments(commentContainer);
         return response.json();
       } else {
         formErrorHandler();
@@ -208,21 +257,14 @@ function displayComment(comment) {
     commentLikes.append(commentLiked);
     commentContainer.append(commentBox);
     commentContainer.append(commentLiked);
-
-    // awaitFetchComments();
   }
 }
 
 function displayComments(comments) {
   for (let i = 0; i < comments.length; i++) {
     const comment = comments[i];
-    // console.log(comment);
 
     displayComment(comment);
-    // if (comment.contains(id)) {
-    //   displayComment(comment);
-    // }
-    // displayComment(comment);
   }
 }
 
@@ -233,3 +275,8 @@ async function awaitFetchComments() {
 }
 
 awaitFetchComments();
+
+function reloadComments(div) {
+  const commentCont = document.querySelector(div);
+  commentCont.reloadDiv();
+}
