@@ -68,7 +68,7 @@ function renderPost(post) {
   pContainer.append(title);
   pContainer.append(descript);
 
-  // INJECTS CREATED CONTEND BEFORE EXISTING DIV IN HTML
+  // INJECTS LOAD MORE BTN BEFORE EXISTING DIV IN HTML
   loadMoreCont.insertAdjacentElement("beforebegin", blogContainer);
 
   loadMoreCont.style.display = "flex";

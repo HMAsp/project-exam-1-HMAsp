@@ -53,35 +53,46 @@ function renderPost(post) {
 
   // CREATES AND DISPLAYS THE MODAL WHEN POSTS ARE CLICKED AND CLOSES IT IF ANYTHING ELSE THAN THE BUTTON TO READ MORE IS CLICKED
   blogContainer.onclick = function () {
-    const modalContainer = document.createElement("div");
+    const modalContainer = document.createElement("a");
     modalContainer.classList.add("modalContainer");
+    modalContainer.href = `../blogSpecific.html?id=${post.id}`;
     const carouselModal = document.createElement("div");
-    carouselModal.classList.add("carouselModal");
+    carouselModal.classList.add("blogListContent");
     const modalImg = document.createElement("img");
     modalImg.src = image;
     carouselModal.append(modalImg);
     const modalTitle = document.createElement("h1");
-    modalTitle.style.color = "white";
+    modalTitle.style.textAlign = "center";
     modalTitle.style.textTransform = "uppercase";
     modalTitle.style.fontSize = "2rem";
     modalTitle.style.margin = "10px";
     modalTitle.innerText = postTitle;
     carouselModal.append(modalTitle);
-    const btn = document.createElement("button");
-    btn.classList.add("cta");
-    btn.type = "button";
-    btn.innerText = "Read more..";
-    btn.onclick = function () {
-      window.location.href = `../blogSpecific.html?id=${post.id}`;
-    };
-    carouselModal.append(btn);
+
+    const descript = document.createElement("p");
+    descript.innerHTML = post.excerpt.rendered;
+    carouselModal.append(descript);
+
+    const clickMore = document.createElement("p");
+    clickMore.innerText = "Click to read..";
+    clickMore.style.textAlign = "center";
+    carouselModal.append(clickMore);
+
+    // const btn = document.createElement("button");
+    // btn.classList.add("cta");
+    // btn.type = "button";
+    // btn.innerText = "Read more..";
+    // btn.onclick = function () {
+    //   window.location.href = `../blogSpecific.html?id=${post.id}`;
+    // };
+    // carouselModal.append(btn);
     modalContainer.append(carouselModal);
     modal.append(modalContainer);
 
     modalContainer.addEventListener("click", function (event) {
       if (
-        !carouselModal.contains(event.target) &&
-        !btn.contains(event.target)
+        !carouselModal.contains(event.target)
+        // !btn.contains(event.target)
       ) {
         modal.innerHTML = "";
       }
