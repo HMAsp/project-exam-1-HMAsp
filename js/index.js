@@ -59,12 +59,12 @@ function renderPost(post) {
     carouselModal.classList.add("carouselModal");
     const modalImg = document.createElement("img");
     modalImg.src = image;
-    modalImg.style.borderRadius = "25px";
     carouselModal.append(modalImg);
     const modalTitle = document.createElement("h1");
     modalTitle.style.color = "white";
     modalTitle.style.textTransform = "uppercase";
     modalTitle.style.fontSize = "2rem";
+    modalTitle.style.margin = "10px";
     modalTitle.innerText = postTitle;
     carouselModal.append(modalTitle);
     const btn = document.createElement("button");
