@@ -68,11 +68,11 @@ function renderPost(post) {
     const modalTitle = document.createElement("h1");
     modalTitle.style.textAlign = "center";
     modalTitle.style.textTransform = "uppercase";
-    modalTitle.style.fontSize = "1rem";
-    modalTitle.innerText = postTitle + " " + "-" + " " + date;
+    modalTitle.style.fontSize = "1.25rem";
     modalTitle.style.color = "var(--text)";
     modalTitle.style.backgroundColor = "var(--darkBg)";
     modalTitle.style.marginTop = "-1px";
+    modalTitle.innerText = postTitle + " " + "-" + " " + date;
 
     carouselModal.append(modalTitle);
 
@@ -81,18 +81,12 @@ function renderPost(post) {
     carouselModal.append(descript);
 
     const clickMore = document.createElement("p");
-    clickMore.innerText = "Click to read..";
+    clickMore.innerText = "click to read full story";
     clickMore.style.textAlign = "center";
+    clickMore.style.textTransform = "uppercase";
+    clickMore.style.fontWeight = "700";
     carouselModal.append(clickMore);
 
-    // const btn = document.createElement("button");
-    // btn.classList.add("cta");
-    // btn.type = "button";
-    // btn.innerText = "Read more..";
-    // btn.onclick = function () {
-    //   window.location.href = `../blogSpecific.html?id=${post.id}`;
-    // };
-    // carouselModal.append(btn);
     modalContainer.append(carouselModal);
     modal.append(modalContainer);
 

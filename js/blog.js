@@ -61,8 +61,11 @@ function renderPost(post) {
   title.innerText = postTitle + " " + "-" + " " + date;
 
   const clickMore = document.createElement("p");
-  clickMore.innerText = "Click to read..";
+  clickMore.innerText = "click to read full story";
   clickMore.style.textAlign = "center";
+  clickMore.style.textTransform = "uppercase";
+  clickMore.style.fontWeight = "700";
+  clickMore.style.marginTop = "auto";
   blogContainer.append(clickMore);
 
   pContainer.append(title);
