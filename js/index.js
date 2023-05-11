@@ -53,10 +53,10 @@ function renderPost(post) {
 
   // CREATES AND DISPLAYS THE MODAL WHEN POSTS ARE CLICKED AND CLOSES IT IF ANYTHING ELSE THAN THE BUTTON TO READ MORE IS CLICKED
   blogContainer.onclick = function () {
-    const modalContainer = document.createElement("a");
+    const modalContainer = document.createElement("div");
     modalContainer.classList.add("modalContainer");
-    modalContainer.href = `../blogSpecific.html?id=${post.id}`;
-    const carouselModal = document.createElement("div");
+    const carouselModal = document.createElement("a");
+    carouselModal.href = `../blogSpecific.html?id=${post.id}`;
     carouselModal.classList.add("blogListContent");
     const modalImg = document.createElement("img");
     modalImg.src = image;
