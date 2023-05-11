@@ -72,6 +72,7 @@ function renderPost(post) {
     modalTitle.innerText = postTitle + " " + "-" + " " + date;
     modalTitle.style.color = "var(--text)";
     modalTitle.style.backgroundColor = "var(--darkBg)";
+    modalTitle.style.marginTop = "-1px";
 
     carouselModal.append(modalTitle);
 
