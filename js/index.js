@@ -1,5 +1,7 @@
 import { burgerFunction } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
+import { formatDateString } from "./global/functions.js";
+
 burgerFunction();
 preventSubDefaultReload();
 
@@ -32,6 +34,8 @@ function renderPost(post) {
   loaderInd.style.display = "none";
   const image = post.jetpack_featured_media_url;
   const postTitle = `"` + post.title.rendered + `"`;
+  const date = formatDateString(post.date);
+
   let modal = document.querySelector(".modal");
 
   const blogContainer = document.createElement("a");
@@ -64,9 +68,11 @@ function renderPost(post) {
     const modalTitle = document.createElement("h1");
     modalTitle.style.textAlign = "center";
     modalTitle.style.textTransform = "uppercase";
-    modalTitle.style.fontSize = "2rem";
-    modalTitle.style.margin = "10px";
-    modalTitle.innerText = postTitle;
+    modalTitle.style.fontSize = "1rem";
+    modalTitle.innerText = postTitle + " " + "-" + " " + date;
+    modalTitle.style.color = "var(--text)";
+    modalTitle.style.backgroundColor = "var(--darkBg)";
+
     carouselModal.append(modalTitle);
 
     const descript = document.createElement("p");
