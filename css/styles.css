@@ -93,6 +93,29 @@ a {
   border-radius: 50px;
 }
 
+.filterListClosed {
+  display: none;
+}
+
+.filterListOpen {
+  position: absolute;
+  padding: 0px 30px;
+  background-color: var(--darkBg);
+  color: var(--text);
+  box-shadow: 0px 2px 5px 0px black;
+  transform: translateX(-25%);
+  margin-top: 9px;
+  animation: fade 0.2s ease-in-out;
+  border-radius: 0 0 25px 25px;
+}
+
+.filterList li {
+  color: var(--text);
+  margin: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
 .hamburger {
   position: none;
   text-align: end;

@@ -1,9 +1,10 @@
 import { burgerFunction } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
 import { formatDateString } from "./global/functions.js";
-
+import { navFilterToggle } from "./global/functions.js";
 burgerFunction();
 preventSubDefaultReload();
+navFilterToggle();
 
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
 const perPage = "?per_page=";

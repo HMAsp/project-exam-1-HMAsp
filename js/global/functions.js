@@ -18,6 +18,48 @@ function burgerFunction() {
 }
 export { burgerFunction };
 
+// TOGGLE FILTERLIST
+function navFilterToggle() {
+  const btn = document.querySelector("#filterBtnOpenClose");
+  const allBtn = document.querySelector(".all");
+  const asia = document.querySelector(".asia");
+  const america = document.querySelector(".america");
+  const africa = document.querySelector(".africa");
+  const europe = document.querySelector(".europe");
+
+  btn.addEventListener("click", function () {
+    const filterDisplay = document.querySelector("#filterDisplay");
+    filterDisplay.classList.toggle("filterListClosed");
+  });
+
+  allBtn.addEventListener("click", function () {
+    document.location = "../../blog.html";
+  });
+
+  asia.addEventListener("click", function () {
+    document.location = "../../blog.html?categories=3";
+  });
+
+  america.addEventListener("click", function () {
+    document.location = "../../blog.html?categories=13";
+  });
+
+  africa.addEventListener("click", function () {
+    document.location = "../../blog.html?categories=6";
+  });
+
+  europe.addEventListener("click", function () {
+    document.location = "../../blog.html?categories=1";
+  });
+  document.addEventListener("click", function (event) {
+    if (!filterDisplay.contains(event.target) && !btn.contains(event.target)) {
+      filterDisplay.classList.toggle("filterListClosed");
+    }
+  });
+}
+
+export { navFilterToggle };
+
 // RUNS A EMAIL FORMAT VALIDATION FOR THE FOOTER SUBSCRIBE FIELD
 function subInputs() {
   const subInput = document.querySelector("#subInput");

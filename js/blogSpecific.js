@@ -3,10 +3,12 @@ import { formatDateString } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
 import { pictureGrabber } from "./global/functions.js";
+import { navFilterToggle } from "./global/functions.js";
 
 burgerFunction();
 subInputs();
 preventSubDefaultReload();
+navFilterToggle();
 
 const queryString = document.location.search;
 

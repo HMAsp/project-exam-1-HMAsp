@@ -2,20 +2,36 @@ import { burgerFunction } from "./global/functions.js";
 import { formatDateString } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
+import { navFilterToggle } from "./global/functions.js";
+
 preventSubDefaultReload();
 subInputs();
 burgerFunction();
+navFilterToggle();
 
 const baseUrl = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
 const perPage = "?per_page=";
 const perPageNum = 10;
 const pageParam = "&page=";
+const categoryFilterParam = "?categories=";
 
 const defaultUrl = baseUrl + perPage + perPageNum;
 const loadMoreUrl = baseUrl + perPage + perPageNum + pageParam;
+const categoryUrl = baseUrl + categoryFilterParam;
 
 const loaderInd = document.querySelector(".loader");
 const loadMoreCont = document.querySelector(".loadMoreImg");
+
+// CATEGORY FILTER VALIDATOR
+const urlParam = new URLSearchParams(window.location.search);
+const categoryParam = urlParam.get("categories");
+function categoryParamHandler() {
+  if (categoryParam) {
+    return categoryParam;
+  } else {
+    return false;
+  }
+}
 
 // FETCHES THE ARRAY
 async function fetchPosts(url) {
@@ -87,13 +103,21 @@ function renderPosts(posts) {
 
 // AWAITS FETCH AND RUNS LOOP FUNCTION
 async function main() {
-  const posts = await fetchPosts(defaultUrl);
-  renderPosts(posts);
+  if (categoryParamHandler()) {
+    const posts = await fetchPosts(
+      baseUrl + categoryFilterParam + categoryParam
+    );
+
+    renderPosts(posts);
+  } else {
+    const posts = await fetchPosts(baseUrl);
+    renderPosts(posts);
+  }
 }
 
 main();
 
-// LOADS MORE POSTS ON CLICKS BY ADDING PAGE PARAM TO URL.
+// LOADS MORE POSTS ON CLICKS BY ADDING PAGE PARAM TO URL AND REMOVES BUTTON IF PAGE 2 HAS BEEN LOADED.
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 let page = 1;
 
