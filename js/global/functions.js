@@ -16,7 +16,6 @@ function burgerFunction() {
     }
   });
 }
-
 export { burgerFunction };
 
 // RUNS A EMAIL FORMAT VALIDATION FOR THE FOOTER SUBSCRIBE FIELD
@@ -32,7 +31,6 @@ function subInputs() {
     }
   });
 }
-
 export { subInputs };
 
 // EMAIL FORMAT CHECKER
@@ -41,7 +39,6 @@ function validateEmail(email) {
   const patternMatches = regEx.test(email);
   return patternMatches;
 }
-
 export { validateEmail };
 
 // VALUE LENGTH CHECKER
@@ -52,7 +49,6 @@ function checkLength(value, len) {
     return false;
   }
 }
-
 export { checkLength };
 
 // FORMATS ISO STRING FORMATTED DATE TO READABLE HUMAN FORMAT (OPTIONS CAN BE CHANGED TO FIT ONES NEEDS)
@@ -64,7 +60,6 @@ function formatDateString(apiDate) {
 
   return formattedDate;
 }
-
 export { formatDateString };
 
 function preventSubDefaultReload() {
@@ -89,7 +84,6 @@ function preventSubDefaultReload() {
     }
   });
 }
-
 export { preventSubDefaultReload };
 
 // GRABBING IMG ELEMENTS FROM ARRAY
@@ -106,7 +100,6 @@ function pictureGrabber(post) {
   }
   return imgUrls;
 }
-
 export { pictureGrabber };
 
 // POSTS EMAIL ADDRESS TO WP BACKEND TO NEWSLETTER FORM FROM THE FOOTER
