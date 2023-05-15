@@ -70,7 +70,7 @@ function validateForm() {
     checkLength(message.value, 25)
   ) {
     console.log("Validation success");
-    // postFormData();
+    showHideMessage();
     return true;
   } else {
     console.log("Incomplete");
@@ -81,6 +81,7 @@ function validateForm() {
 formBtn.addEventListener("click", function (event) {
   if (validateForm()) {
     postFormData();
+    // clearInputs();
   }
   event.preventDefault();
 });
@@ -106,20 +107,25 @@ function postFormData() {
     });
 }
 
-// formContainer.addEventListener("submit", function () {
-//   const formData = new FormData(formContainer);
-//   const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts/";
-//   fetch(url, {
-//     method: "POST",
-//     body: formData,
-//   })
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       console.log("Form saved:", data);
-//     })
-//     .catch(function (error) {
-//       console.error(("Error:", error));
-//     });
-// });
+function showHideMessage() {
+  const container = document.querySelector(".confirmationCont");
+  container.style.display = "flex";
+  // const inputs = document.querySelector("#name");
+  // const textArea = document.querySelectorAll("textarea");
+  // console.log(inputs);
+  // inputs.value = "";
+  // textArea.value = "";
+
+  setTimeout(function () {
+    // container.style.display = "none";
+    window.location.reload();
+  }, 7000);
+}
+
+// function clearInputs() {
+//   const inputs = document.querySelectorAll("input");
+//   const textArea = document.querySelectorAll("textarea");
+//   console.log(inputs);
+//   inputs.value = "";
+//   textArea.value = "";
+// }

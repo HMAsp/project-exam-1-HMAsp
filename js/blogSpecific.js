@@ -167,7 +167,7 @@ async function createComment() {
     .then(function (response) {
       if (response.ok && validateEmail(email)) {
         formField.innerHTML = `<h5 class="commentThanks">Thank you for leaving a comment</h5>`;
-        reloadComments(commentContainer);
+
         return response.json();
       } else {
         formErrorHandler();
@@ -283,7 +283,7 @@ async function awaitFetchComments() {
 
 awaitFetchComments();
 
-function reloadComments(div) {
-  const commentCont = document.querySelector(div);
-  commentCont.reloadDiv();
-}
+// function reloadComments(div) {
+//   const commentCont = document.querySelector(div);
+//   commentCont.reloadDiv();
+// }

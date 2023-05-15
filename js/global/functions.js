@@ -27,9 +27,9 @@ function navFilterToggle() {
   const africa = document.querySelector(".africa");
   const europe = document.querySelector(".europe");
 
-  btn.addEventListener("click", function () {
+  btn.addEventListener("mouseover", function () {
     const filterDisplay = document.querySelector("#filterDisplay");
-    filterDisplay.classList.toggle("filterListClosed");
+    filterDisplay.classList.remove("filterListClosed");
   });
 
   allBtn.addEventListener("click", function () {
