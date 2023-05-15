@@ -53,7 +53,7 @@ function navFilterToggle() {
   });
   document.addEventListener("click", function (event) {
     if (!filterDisplay.contains(event.target) && !btn.contains(event.target)) {
-      filterDisplay.classList.toggle("filterListClosed");
+      filterDisplay.classList.add("filterListClosed");
     }
   });
 }
@@ -133,14 +133,20 @@ function pictureGrabber(post) {
   const tempImageContainer = document.createElement("div");
   tempImageContainer.innerHTML = post;
 
-  const postImages = tempImageContainer.getElementsByTagName("img");
+  const postImages = tempImageContainer.getElementsByTagName("img", "alt");
 
   const imgUrls = [];
+  const imgAlts = [];
   for (let i = 0; i < postImages.length; i++) {
     const imgUrl = postImages[i].src;
+    const imgAlt = postImages[i].alt;
     imgUrls.push(imgUrl);
+    imgAlts.push(imgAlt);
   }
-  return imgUrls;
+  return {
+    imgUrls: imgUrls,
+    imgAlts: imgAlts,
+  };
 }
 export { pictureGrabber };
 

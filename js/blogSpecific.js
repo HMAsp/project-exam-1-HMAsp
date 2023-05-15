@@ -41,7 +41,7 @@ function displayPost(post) {
   const date = formatDateString(rawDate);
 
   const mediaGalleryArray = pictureGrabber(wpPost);
-  console.log(mediaGalleryArray);
+  // console.log(mediaGalleryArray);
 
   document.title = "Inside the trip:" + " " + title.toLocaleUpperCase();
 
@@ -59,12 +59,19 @@ function displayPost(post) {
   const galleryContainer = document.createElement("div");
   galleryContainer.classList.add("galleryContainer");
 
-  // RUNS A CREATE IMG FOR EACH OF THE URLS IN THE GALLERY ARRAY AND APPENDS IT TO THE CONTAINER
-  mediaGalleryArray.forEach(function (imageUrl) {
+  // LOOPS THROUGH IMAGES AND ALTS AND CREATES THE IMAGES AND ADDS THE ALTS
+  const imgUrls = mediaGalleryArray.imgUrls;
+  const imgAlts = mediaGalleryArray.imgAlts;
+  const length = (imgUrls.length, imgAlts.length);
+
+  for (let i = 0; i < length; i++) {
     const image = document.createElement("img");
-    image.src = imageUrl;
+    image.src = imgUrls[i];
+    image.alt = imgAlts[i];
+
     galleryContainer.append(image);
 
+    // CREATES THE IMAGE MODALS ON IMAGE CLICK AND LISTENS FOR CLICKS OUTSIDE OF THE IMAGE TO CLOSE IT.
     image.addEventListener("click", function () {
       const modalCont = document.createElement("div");
       modalCont.classList.add("modalCont");
@@ -88,10 +95,11 @@ function displayPost(post) {
         }
       });
     });
-  });
+  }
 
   container.append(galleryContainer);
 
+  // ADDS POST CONTENT (TEXT)
   const postContainer = document.createElement("div");
   postContainer.classList.add("postContainer");
   postContainer.innerHTML = wpPost;
@@ -107,15 +115,12 @@ function displayPost(post) {
 
 async function mainFunction() {
   const post = await fetchSinglePost();
-  // console.log(post);
 
   displayPost(post);
 }
-
 mainFunction();
 
 //COMMENT SECTION OPEN-CLOSE
-
 const openComment = document.querySelector(".addCommentTextBtn");
 openComment.addEventListener("click", function (event) {
   event.preventDefault();

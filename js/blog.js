@@ -3,6 +3,7 @@ import { formatDateString } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
 import { navFilterToggle } from "./global/functions.js";
+import { pictureGrabber } from "./global/functions.js";
 
 preventSubDefaultReload();
 subInputs();
@@ -45,7 +46,7 @@ async function fetchPosts(url) {
 
 // CREATES AND DISPLAYS POSTS ON WEBSITE
 function renderPost(post) {
-  console.log("recent post:" + " " + post.slug);
+  // console.log("recent post:" + " " + post.slug);
 
   loaderInd.style.display = "none";
   const image = post.jetpack_featured_media_url;
@@ -60,6 +61,9 @@ function renderPost(post) {
 
   const blogImg = document.createElement("img");
   blogImg.src = image;
+  const imgAlts = pictureGrabber(post.content.rendered);
+  blogImg.alt = imgAlts.imgAlts[0];
+
   blogContainer.append(blogImg);
 
   const pContainer = document.createElement("div");
@@ -101,14 +105,22 @@ function renderPosts(posts) {
   }
 }
 
-// AWAITS FETCH AND RUNS LOOP FUNCTION
+// AWAITS FETCH AND RUNS LOOP FUNCTION. CATEGORY RETURNS TRUE IT WILL FETCH THE BLOGS IN THE GIVEN CATEGORY. IF NO CAT IS PRESENT IT FETCHES THE DEFAULT 10.
 async function main() {
+  // const loadElseBtn = document.querySelector(".loadMoreImg");
+
   if (categoryParamHandler()) {
     const posts = await fetchPosts(
       baseUrl + categoryFilterParam + categoryParam
     );
+    // loadElseBtn.addEventListener("click", function () {
+    //   // document.location.reload();
+    //   loadMoreBtn.href = "../blog.html";
+    //   fetchPosts(baseUrl);
+    // });
 
     renderPosts(posts);
+    loadMoreCont.style.display = "none";
   } else {
     const posts = await fetchPosts(baseUrl);
     renderPosts(posts);
