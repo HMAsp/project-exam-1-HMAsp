@@ -94,6 +94,12 @@ function displayPost(post) {
           modalCont.remove();
         }
       });
+      modalCont.addEventListener("touchmove", function (event) {
+        if (blogModal.contains(event.target)) {
+          blogModal.remove();
+          modalCont.remove();
+        }
+      });
     });
   }
 
