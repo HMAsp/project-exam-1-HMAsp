@@ -92,10 +92,12 @@ function renderPost(post) {
     modal.append(modalContainer);
 
     modalContainer.addEventListener("click", function (event) {
-      if (
-        !carouselModal.contains(event.target)
-        // !btn.contains(event.target)
-      ) {
+      if (!carouselModal.contains(event.target)) {
+        modal.innerHTML = "";
+      }
+    });
+    modalContainer.addEventListener("touchmove", function (event) {
+      if (carouselModal.contains(event.target)) {
         modal.innerHTML = "";
       }
     });
