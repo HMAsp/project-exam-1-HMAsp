@@ -299,6 +299,8 @@ a {
 
 .cta:hover {
   cursor: pointer;
+  background-color: var(--text);
+  color: var(--darkBg);
 }
 
 .modalContainer {
@@ -711,6 +713,8 @@ figure img {
 
 .subButton:hover {
   cursor: pointer;
+  background-color: var(--text);
+  color: var(--darkBg);
 }
 
 .subInputCheckmark {
