@@ -176,4 +176,5 @@ input:-webkit-autofill {
   color: var(--text);
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 }
