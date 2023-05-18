@@ -85,6 +85,7 @@ function displayPost(post) {
       container.append(modalCont);
       modalCont.append(blogModal);
 
+      // REMOVES MODAL IF CLICKED OUTSIDE OF CREATION
       modalCont.addEventListener("click", function (event) {
         if (
           !blogModal.contains(event.target) &&
@@ -94,6 +95,7 @@ function displayPost(post) {
           modalCont.remove();
         }
       });
+      // ADDS A TOUCH REMOVE OF MODALS FOR MOBILE
       modalCont.addEventListener("touchmove", function (event) {
         if (blogModal.contains(event.target)) {
           blogModal.remove();

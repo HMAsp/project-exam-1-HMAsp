@@ -91,11 +91,13 @@ function renderPost(post) {
     modalContainer.append(carouselModal);
     modal.append(modalContainer);
 
+    // REMOVES MODAL IF CLICKED OUTSIDE OF CREATION
     modalContainer.addEventListener("click", function (event) {
       if (!carouselModal.contains(event.target)) {
         modal.innerHTML = "";
       }
     });
+    // // ADDS A TOUCH REMOVE OF MODALS FOR MOBILE
     modalContainer.addEventListener("touchmove", function (event) {
       if (carouselModal.contains(event.target)) {
         modal.innerHTML = "";

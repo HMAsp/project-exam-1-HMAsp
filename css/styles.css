@@ -63,6 +63,8 @@ a {
   left: 0;
   width: 100%;
   max-height: fit-content;
+  margin: auto;
+  background-color: var(--darkBg);
 }
 
 .navUl {
@@ -73,15 +75,18 @@ a {
   justify-content: space-between;
   align-items: center;
   margin: 0px 0px;
-  background-color: var(--darkBg);
+  /* background-color: var(--darkBg); */
 }
 
-.navUl li {
+.navUl li,
+.navUl li > * {
+  /* width: inherit; */
   list-style: none;
   text-transform: uppercase;
   margin: auto;
   padding: 10px 0px;
   letter-spacing: 2px;
+  text-align: left;
 }
 
 .navUl li a:hover {
@@ -110,9 +115,13 @@ a {
 
 .filterList li {
   color: var(--text);
-  margin: 20px;
+  margin: 20px 50px;
   letter-spacing: 2px;
   cursor: pointer;
+}
+
+#filterDisplay {
+  margin-top: 10px;
 }
 
 #filterDisplay li:hover {

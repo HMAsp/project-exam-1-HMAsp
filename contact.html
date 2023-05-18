@@ -106,7 +106,15 @@
             </p>
           </div>
           <form class="formContainer" action="post">
-            <label for="your-name">full name</label>
+            <label for="your-name"
+              >full name<span id="nameReq" class="formRequirements">
+                - min 5 characters</span
+              >
+              <!-- <span class="nameCheckmark"
+                ><img
+                  src="images/checkmark_white.png"
+                  alt="checkmark symbol" /></span> -->
+            </label>
             <input
               name="your-name"
               type="text"
@@ -114,11 +122,14 @@
               placeholder="Enter full name"
             />
             <span class="nameCheckmark"
-              ><img
-                src="images/carbon_checkmark-outline.png"
-                alt="checkmark symbol"
+              ><img src="images/checkmark_white.png" alt="checkmark symbol"
             /></span>
-            <label for="your-email">email address</label>
+            <label for="your-email"
+              >email address
+              <span id="emailReq" class="formRequirements">
+                - Must be valid email address</span
+              ></label
+            >
             <input
               name="your-email"
               type="text"
@@ -126,11 +137,13 @@
               placeholder="Enter email address"
             />
             <span class="emailCheckmark"
-              ><img
-                src="images/carbon_checkmark-outline.png"
-                alt="checkmark symbol"
+              ><img src="images/checkmark_white.png" alt="checkmark symbol"
             /></span>
-            <label for="your-subject">subject</label>
+            <label for="your-subject"
+              >subject<span id="subjectReq" class="formRequirements">
+                - min 15 characters</span
+              ></label
+            >
             <input
               name="your-subject"
               type="text"
@@ -138,11 +151,13 @@
               placeholder="Enter subject"
             />
             <span class="subjectCheckmark"
-              ><img
-                src="images/carbon_checkmark-outline.png"
-                alt="checkmark symbol"
+              ><img src="images/checkmark_white.png" alt="checkmark symbol"
             /></span>
-            <label for="your-message">message</label>
+            <label for="your-message"
+              >message<span id="messageReq" class="formRequirements">
+                - min 25 characters</span
+              ></label
+            >
             <textarea
               class="formMsg"
               name="your-message"
@@ -152,13 +167,10 @@
               placeholder="Enter message"
             ></textarea>
             <span class="messageCheckmark"
-              ><img
-                src="images/carbon_checkmark-outline.png"
-                alt="checkmark symbol"
+              ><img src="images/checkmark_white.png" alt="checkmark symbol"
             /></span>
             <button class="cta formBtn" name="btn" type="submit">Send</button>
           </form>
-          <!-- </div> -->
         </div>
       </div>
     </main>

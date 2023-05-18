@@ -26,37 +26,53 @@ const formBtn = document.querySelector(".formBtn");
 
 //CHECKS IF NAME LENGTH IS 5 MINIMUM
 fullName.addEventListener("input", function () {
+  const req = document.querySelector("#nameReq");
+
   if (checkLength(fullName.value, 4)) {
     nameCheckmark.classList.add("valid");
+    req.style.opacity = "0";
   } else {
     nameCheckmark.classList.remove("valid");
+    req.style.opacity = "1";
   }
 });
 
 //CHECKS IF EMAIL IS CORRECTLY FORMATTED
 email.addEventListener("input", function () {
+  const req = document.querySelector("#emailReq");
+
   if (validateEmail(email.value)) {
     emailCheckmark.classList.add("valid");
+    req.style.opacity = "0";
   } else {
     emailCheckmark.classList.remove("valid");
+    req.style.opacity = "1";
   }
 });
 
 //CHECKS IF SUBJECT LENGTH IS 15 MINIMUM
 subject.addEventListener("input", function () {
+  const req = document.querySelector("#subjectReq");
+
   if (checkLength(subject.value, 14)) {
     subjectCheckmark.classList.add("valid");
+    req.style.opacity = "0";
   } else {
     subjectCheckmark.classList.remove("valid");
+    req.style.opacity = "1";
   }
 });
 
 //CHECKS IF MESSAGE LENGTH IS 25 MINIMUM
 message.addEventListener("input", function () {
+  const req = document.querySelector("#messageReq");
+
   if (checkLength(message.value, 25)) {
     messageCheckmark.classList.add("valid");
+    req.style.opacity = "0";
   } else {
     messageCheckmark.classList.remove("valid");
+    req.style.opacity = "1";
   }
 });
 
