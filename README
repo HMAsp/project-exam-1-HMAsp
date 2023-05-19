@@ -1,7 +1,23 @@
-** REFRENCES **
-Pictures are from https://unsplash.com/
-All credits go to the authors who are named in the img URL and filenames.
+# Project Description
 
-Iconify has been used for icons.
+This GitHub repository contains the code and assets for my personal project exam website, "Inside the Trip." The goal of this project was to create a clean and simplistic website design that offers an easy-to-navigate and enjoyable reading experience. Additionally, I aimed to make the website fully scalable without the need for media queries.
 
-ChatGPT has been used for text instead of using Lorem Ipsum
+In terms of design, I went for a modern dark theme, incorporating a color palette that strikes a balance between a contemporary look and a comfortable reading environment. All images used in the website are sourced from Unsplash, and proper references to the authors and Unsplash are included in the file names. While I utilized some icons from Iconify, the majority of the design, development, and programming were accomplished using vanilla HTML, CSS, and JavaScript.
+
+The development phase of the project involved leveraging the WordPress REST API. I encountered some challenges with the API endpoints, as it seemed to favor the use of innerHTML rather than providing raw data. However, I successfully managed to extract and incorporate the necessary data into my design. To achieve this, I used JavaScript to collect image tags and alt attributes from the fetched posts, storing them in separate arrays for future use. I also utilized JavaScript to remove figure elements from the retrieved posts, ensuring a cleaner presentation.
+
+The index.html page features a carousel component that fetches the featured images from the eight latest posts using a GET request. The carousel is implemented using JavaScript, with navigation arrows and scroll functionality. Clicking on the images opens a modal that displays the corresponding blog card, as seen on the blog list page. Clicking again on the modal takes the user to the full blog post, rendered using the post's unique ID in the query string. This seamless integration between pages enhances the overall user experience.
+
+The blog.html page presents a straightforward layout, with data fetched from an array and passed through a custom createPost function, responsible for generating the blog cards. To fulfill the project requirements, I included a button at the end of the cards, allowing users to load more posts. This functionality fetches page 2 of posts and appends them to the existing list, with the button being hidden once all posts have been rendered. Clicking on the blog cards leads to a detailed page, offering more images, an additional modal, and fictive blog text generated using ChatGPT. I configured ChatGPT to generate text that mimics real content, demonstrating its potential beyond the use of standard lorem ipsum.
+
+The about page is a straightforward section that provides a ChatGPT-generated text introducing our couple and their travel experiences.
+
+The contact page features a contact form with JavaScript-based validation. To maintain a clean and minimalist approach, a simple checkmark appears when requirements are met, removing the "required" text from the label.
+
+Additionally, the navbar's blog link includes a dropdown menu that allows users to select continents. Clicking on a continent triggers a fetch request on the blog list page, resulting in only the corresponding blogs being rendered.
+
+The contact form is fully functional, allowing users to submit their information, which is then posted to WordPress and stored in the database. To enable this functionality, I used the Contact Form 7 plugin, which provided an endpoint for successful integration. Furthermore, I added the Flamingo plugin, which handles message storage within WordPress. As an extra feature, I made the subscription field in the footer work by adding a second form and manipulating the post data to only require the email for the POST request.
+
+Finally, the blog detail page includes a comment section at the bottom. Users can leave comments, and upon refreshing the page, their comments will appear. To achieve this, comments are posted to the WordPress comments section and fetched upon reload. By utilizing the blog ID as the comment ID, the fetched comments are sorted to match the specific blog post, ensuring that only relevant comments are displayed. The comment for also uses Javascript validation. There is a stylish like icon and text under the which is non-functional and all comments will have the "Liked" indicator.
+
+This GitHub repository serves as a showcase of my design and development skills, demonstrating my ability to create an aesthetically pleasing and functional website using a vanilla combination of HTML, CSS, JavaScript, and integration with the WordPress REST API.
