@@ -1,6 +1,6 @@
 # Project Description
 
-This GitHub repository contains the code and assets for my personal project exam website, "Inside the Trip." The goal of this project was to create a clean and simplistic website design that offers an easy-to-navigate and enjoyable reading experience. Additionally, I aimed to make the website fully scalable without the need for media queries.
+This GitHub repository contains the code and assets for my personal project exam website "Inside the Trip." The goal of this project was to create a clean and simplistic website design that offers an easy-to-navigate and enjoyable reading experience. Additionally, I aimed to make the website fully scalable without the need for media queries.
 
 In terms of design, I went for a modern dark theme, incorporating a color palette that strikes a balance between a contemporary look and a comfortable reading environment. All images used in the website are sourced from Unsplash, and proper references to the authors and Unsplash are included in the file names. While I utilized some icons from Iconify, the majority of the design, development, and programming were accomplished using vanilla HTML, CSS, and JavaScript.
 
