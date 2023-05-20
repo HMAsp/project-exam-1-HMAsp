@@ -97,9 +97,30 @@ function validateForm() {
 formBtn.addEventListener("click", function (event) {
   if (validateForm()) {
     postFormData();
-    // clearInputs();
+  } else {
+    event.preventDefault();
+
+    if (!checkLength(fullName.value, 4)) {
+      fullName.style.borderLeft = "3px solid red";
+    } else {
+      fullName.style.borderLeft = "";
+    }
+    if (!validateEmail(email.value)) {
+      email.style.borderLeft = "3px solid red";
+    } else {
+      email.style.borderLeft = "";
+    }
+    if (!checkLength(subject.value, 14)) {
+      subject.style.borderLeft = "3px solid red";
+    } else {
+      subject.style.borderLeft = "";
+    }
+    if (!checkLength(message.value, 25)) {
+      message.style.borderLeft = "3px solid red";
+    } else {
+      message.style.borderLeft = "";
+    }
   }
-  event.preventDefault();
 });
 
 function postFormData() {
