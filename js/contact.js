@@ -31,6 +31,7 @@ fullName.addEventListener("input", function () {
   if (checkLength(fullName.value, 4)) {
     nameCheckmark.classList.add("valid");
     req.style.opacity = "0";
+    fullName.style.border = "";
   } else {
     nameCheckmark.classList.remove("valid");
     req.style.opacity = "1";
@@ -44,6 +45,7 @@ email.addEventListener("input", function () {
   if (validateEmail(email.value)) {
     emailCheckmark.classList.add("valid");
     req.style.opacity = "0";
+    email.style.border = "";
   } else {
     emailCheckmark.classList.remove("valid");
     req.style.opacity = "1";
@@ -57,6 +59,7 @@ subject.addEventListener("input", function () {
   if (checkLength(subject.value, 14)) {
     subjectCheckmark.classList.add("valid");
     req.style.opacity = "0";
+    subject.style.border = "";
   } else {
     subjectCheckmark.classList.remove("valid");
     req.style.opacity = "1";
@@ -70,6 +73,7 @@ message.addEventListener("input", function () {
   if (checkLength(message.value, 25)) {
     messageCheckmark.classList.add("valid");
     req.style.opacity = "0";
+    message.style.border = "";
   } else {
     messageCheckmark.classList.remove("valid");
     req.style.opacity = "1";
@@ -77,7 +81,6 @@ message.addEventListener("input", function () {
 });
 
 //CHECKS IF ALL INPUTS ARE VALID AND SUBMITS WITH SUCCESS MESSAGE OR FAILS WITH ERROR MESSAGE
-
 function validateForm() {
   if (
     checkLength(fullName.value, 4) &&
@@ -94,6 +97,7 @@ function validateForm() {
   }
 }
 
+// VALIDATES FORM ON SUBMIT. ADDS RED BORDERS TO INCOMPLETE INPUTFIELDS. BORDERS ARE REMOVED ON THE INPUT EVENTLISTENERS
 formBtn.addEventListener("click", function (event) {
   if (validateForm()) {
     postFormData();
@@ -101,28 +105,25 @@ formBtn.addEventListener("click", function (event) {
     event.preventDefault();
 
     if (!checkLength(fullName.value, 4)) {
-      fullName.style.borderLeft = "3px solid red";
-    } else {
-      fullName.style.borderLeft = "";
+      fullName.style.borderLeft = "4px solid red";
+      fullName.style.borderRight = "4px solid red";
     }
     if (!validateEmail(email.value)) {
-      email.style.borderLeft = "3px solid red";
-    } else {
-      email.style.borderLeft = "";
+      email.style.borderLeft = "4px solid red";
+      email.style.borderRight = "4px solid red";
     }
     if (!checkLength(subject.value, 14)) {
-      subject.style.borderLeft = "3px solid red";
-    } else {
-      subject.style.borderLeft = "";
+      subject.style.borderLeft = "4px solid red";
+      subject.style.borderRight = "4px solid red";
     }
     if (!checkLength(message.value, 25)) {
-      message.style.borderLeft = "3px solid red";
-    } else {
-      message.style.borderLeft = "";
+      message.style.borderLeft = "4px solid red";
+      message.style.borderRight = "4px solid red";
     }
   }
 });
 
+// POSTS THE FORMDATA TO THE CONTACT FORM 7 WORDPRESS PLUGIN
 function postFormData() {
   const formId = "130";
   const url = `https://codewithspooks.com/insidethetrip/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
@@ -144,25 +145,12 @@ function postFormData() {
     });
 }
 
+// IF FORM IS COMPLETE AND SENT THIS FUNCTION SHOWS THE CONFIMATION MESSAGE, REMOVES IT AFTER A DELAY AND RELOADS THE PAGE
 function showHideMessage() {
   const container = document.querySelector(".confirmationCont");
   container.style.display = "flex";
-  // const inputs = document.querySelector("#name");
-  // const textArea = document.querySelectorAll("textarea");
-  // console.log(inputs);
-  // inputs.value = "";
-  // textArea.value = "";
 
   setTimeout(function () {
-    // container.style.display = "none";
     window.location.reload();
   }, 7000);
 }
-
-// function clearInputs() {
-//   const inputs = document.querySelectorAll("input");
-//   const textArea = document.querySelectorAll("textarea");
-//   console.log(inputs);
-//   inputs.value = "";
-//   textArea.value = "";
-// }

@@ -20,6 +20,7 @@ console.log(id);
 
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts/";
 
+// FETCHES THE URL WITH THE ADDED ID TO GET THE SPECIFIC POST
 async function fetchSinglePost() {
   const response = await fetch(url + id);
 
@@ -33,15 +34,14 @@ const setTitle = document.querySelector(".blogPageTitle");
 
 let loader = document.querySelector(".carouselContainer");
 
+// DISPLAYS THE POST CONTENT
 function displayPost(post) {
   loader.innerHTML = "";
   const title = post.title.rendered;
   const rawDate = post.date;
   const wpPost = post.content.rendered;
   const date = formatDateString(rawDate);
-
   const mediaGalleryArray = pictureGrabber(wpPost);
-  // console.log(mediaGalleryArray);
 
   document.title = "Inside the trip:" + " " + title.toLocaleUpperCase();
 
@@ -121,6 +121,7 @@ function displayPost(post) {
   container.append(postContainer);
 }
 
+// MAIN CHAIN FUNCTION CHAIN STARTER
 async function mainFunction() {
   const post = await fetchSinglePost();
 
@@ -140,8 +141,7 @@ openComment.addEventListener("click", function (event) {
   }
 });
 
-// POSTING COMMENTS TO WP
-
+// POSTING COMMENTS TO WP AND FETCHING STORED COMMENTS TO DISPLAY THEM
 const postBtn = document.querySelector(".addCommentBtn");
 const postUrl =
   "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/comments";
@@ -195,6 +195,7 @@ postBtn.addEventListener("click", function (event) {
   createComment();
 });
 
+// COMMENTS FORM VALIDATOR
 function formErrorHandler() {
   const nameInput = document.querySelector("#yourName");
   const emailInput = document.querySelector("#yourEmail");
@@ -217,10 +218,9 @@ function formErrorHandler() {
   }
 }
 
-// DISPLAY COMMENTS IN BOXES
-
 const commentContainer = document.querySelector(".commentContainer");
 
+// FETCHES COMMENTS
 async function fetchComments() {
   const response = await fetch(postUrl);
   const comments = await response.json();
@@ -228,6 +228,7 @@ async function fetchComments() {
   return comments;
 }
 
+// CHECKS IF COMMENT IDS AND POST ID MATCH. IF TRUE THEY ARE DISPLAYED
 function displayComment(comment) {
   if (comment.post == id) {
     console.log("Post matches ID:", comment.post);
@@ -275,6 +276,7 @@ function displayComment(comment) {
   }
 }
 
+//LOOPS COMMENTS AND PASSES THEM TO DISPLAY COMMENT
 function displayComments(comments) {
   for (let i = 0; i < comments.length; i++) {
     const comment = comments[i];
@@ -283,6 +285,7 @@ function displayComments(comments) {
   }
 }
 
+// FETCH COMMENTS AND PASS THEM TO LOOP COMMENTS FUNCTION
 async function awaitFetchComments() {
   const data = await fetchComments();
 
@@ -290,8 +293,3 @@ async function awaitFetchComments() {
 }
 
 awaitFetchComments();
-
-// function reloadComments(div) {
-//   const commentCont = document.querySelector(div);
-//   commentCont.reloadDiv();
-// }

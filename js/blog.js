@@ -16,9 +16,7 @@ const perPageNum = 10;
 const pageParam = "&page=";
 const categoryFilterParam = "?categories=";
 
-const defaultUrl = baseUrl + perPage + perPageNum;
 const loadMoreUrl = baseUrl + perPage + perPageNum + pageParam;
-const categoryUrl = baseUrl + categoryFilterParam;
 
 const loaderInd = document.querySelector(".loader");
 const loadMoreCont = document.querySelector(".loadMoreImg");
@@ -46,8 +44,6 @@ async function fetchPosts(url) {
 
 // CREATES AND DISPLAYS POSTS ON WEBSITE
 function renderPost(post) {
-  // console.log("recent post:" + " " + post.slug);
-
   loaderInd.style.display = "none";
   const image = post.jetpack_featured_media_url;
   const postTitle = `"` + post.title.rendered + `"`;
@@ -93,7 +89,6 @@ function renderPost(post) {
 
   // INJECTS LOAD MORE BTN BEFORE EXISTING DIV IN HTML
   loadMoreCont.insertAdjacentElement("beforebegin", blogContainer);
-
   loadMoreCont.style.display = "flex";
 }
 
@@ -107,17 +102,10 @@ function renderPosts(posts) {
 
 // AWAITS FETCH AND RUNS LOOP FUNCTION. CATEGORY RETURNS TRUE IT WILL FETCH THE BLOGS IN THE GIVEN CATEGORY. IF NO CAT IS PRESENT IT FETCHES THE DEFAULT 10.
 async function main() {
-  // const loadElseBtn = document.querySelector(".loadMoreImg");
-
   if (categoryParamHandler()) {
     const posts = await fetchPosts(
       baseUrl + categoryFilterParam + categoryParam
     );
-    // loadElseBtn.addEventListener("click", function () {
-    //   // document.location.reload();
-    //   loadMoreBtn.href = "../blog.html";
-    //   fetchPosts(baseUrl);
-    // });
 
     renderPosts(posts);
     loadMoreCont.style.display = "none";
