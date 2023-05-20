@@ -100,28 +100,28 @@ body {
   display: none;
   position: absolute;
   transform: translateY(100%);
-  margin-left: -30px;
+  margin-left: -32px;
 }
 
 .emailCheckmark {
   display: none;
   position: absolute;
   transform: translateY(370%);
-  margin-left: -30px;
+  margin-left: -32px;
 }
 
 .subjectCheckmark {
   display: none;
   position: absolute;
   transform: translateY(630%);
-  margin-left: -30px;
+  margin-left: -32px;
 }
 
 .messageCheckmark {
   display: none;
   position: absolute;
   transform: translateY(880%);
-  margin-left: -30px;
+  margin-left: -32px;
 }
 
 .valid {
