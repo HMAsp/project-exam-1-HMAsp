@@ -188,6 +188,10 @@ a {
   margin-left: 40px;
 }
 
+.active {
+  text-decoration: underline;
+}
+
 /* MAIN BODY INDEX*/
 
 .loader {
@@ -678,7 +682,7 @@ figure img {
   bottom: 0;
   background-color: var(--darkBg);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: flex-end;
   box-sizing: border-box;
   max-width: 100%;

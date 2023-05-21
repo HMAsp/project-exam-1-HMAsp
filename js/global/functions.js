@@ -118,10 +118,12 @@ function preventSubDefaultReload() {
       subBtn.style.color = "lightgreen";
       subBtn.value = "Subscribed";
       subInput.value = "";
+      subInput.style.borderLeft = "8px solid lightgreen";
       subInput.placeholder = "You have signed up for our newsletter";
     } else {
       subInput.placeholder = "Please provide valid email address";
       subInput.value = "";
+      subInput.style.borderLeft = "8px solid red";
       subBtn.style.color = "red";
     }
   });
