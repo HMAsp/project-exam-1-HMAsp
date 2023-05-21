@@ -29,11 +29,10 @@ fullName.addEventListener("input", function () {
   const req = document.querySelector("#nameReq");
 
   if (checkLength(fullName.value, 4)) {
-    nameCheckmark.classList.add("valid");
     req.style.opacity = "0";
     fullName.style.border = "";
+    fullName.style.borderLeft = "8px solid lightgreen";
   } else {
-    nameCheckmark.classList.remove("valid");
     req.style.opacity = "1";
   }
 });
@@ -43,11 +42,10 @@ email.addEventListener("input", function () {
   const req = document.querySelector("#emailReq");
 
   if (validateEmail(email.value)) {
-    emailCheckmark.classList.add("valid");
     req.style.opacity = "0";
     email.style.border = "";
+    email.style.borderLeft = "8px solid lightgreen";
   } else {
-    emailCheckmark.classList.remove("valid");
     req.style.opacity = "1";
   }
 });
@@ -57,11 +55,10 @@ subject.addEventListener("input", function () {
   const req = document.querySelector("#subjectReq");
 
   if (checkLength(subject.value, 14)) {
-    subjectCheckmark.classList.add("valid");
     req.style.opacity = "0";
     subject.style.border = "";
+    subject.style.borderLeft = "8px solid lightgreen";
   } else {
-    subjectCheckmark.classList.remove("valid");
     req.style.opacity = "1";
   }
 });
@@ -71,11 +68,10 @@ message.addEventListener("input", function () {
   const req = document.querySelector("#messageReq");
 
   if (checkLength(message.value, 25)) {
-    messageCheckmark.classList.add("valid");
     req.style.opacity = "0";
     message.style.border = "";
+    message.style.borderLeft = "8px solid lightgreen";
   } else {
-    messageCheckmark.classList.remove("valid");
     req.style.opacity = "1";
   }
 });
@@ -106,20 +102,16 @@ formBtn.addEventListener("click", function (event) {
     // event.preventDefault();
 
     if (!checkLength(fullName.value, 4)) {
-      fullName.style.borderLeft = "4px solid red";
-      fullName.style.borderRight = "4px solid red";
+      fullName.style.borderLeft = "8px solid red";
     }
     if (!validateEmail(email.value)) {
-      email.style.borderLeft = "4px solid red";
-      email.style.borderRight = "4px solid red";
+      email.style.borderLeft = "8px solid red";
     }
     if (!checkLength(subject.value, 14)) {
-      subject.style.borderLeft = "4px solid red";
-      subject.style.borderRight = "4px solid red";
+      subject.style.borderLeft = "8px solid red";
     }
     if (!checkLength(message.value, 25)) {
-      message.style.borderLeft = "4px solid red";
-      message.style.borderRight = "4px solid red";
+      message.style.borderLeft = "8px solid red";
     }
   }
 });
