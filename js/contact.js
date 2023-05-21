@@ -99,10 +99,11 @@ function validateForm() {
 
 // VALIDATES FORM ON SUBMIT. ADDS RED BORDERS TO INCOMPLETE INPUTFIELDS. BORDERS ARE REMOVED ON THE INPUT EVENTLISTENERS
 formBtn.addEventListener("click", function (event) {
+  event.preventDefault();
   if (validateForm()) {
     postFormData();
   } else {
-    event.preventDefault();
+    // event.preventDefault();
 
     if (!checkLength(fullName.value, 4)) {
       fullName.style.borderLeft = "4px solid red";
