@@ -1,4 +1,3 @@
-import { burgerFunction } from "./global/functions.js";
 import { validateEmail } from "./global/functions.js";
 import { checkLength } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
@@ -6,7 +5,6 @@ import { preventSubDefaultReload } from "./global/functions.js";
 import { navFilterToggle } from "./global/functions.js";
 
 subInputs();
-burgerFunction();
 preventSubDefaultReload();
 navFilterToggle();
 

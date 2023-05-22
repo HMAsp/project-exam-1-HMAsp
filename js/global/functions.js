@@ -1,23 +1,3 @@
-// LISTENS AND REACTS TO THE BURGERMENU AND OPENS MENU. ALSO LISTENS FOR CLICKS OUTSIDE OF THE MENU TO CLOSE IT
-function burgerFunction() {
-  const burgerMenuBtn = document.querySelector("#hamburgerIcon");
-  const burgerMenu = document.querySelector(".burgerMenu");
-
-  burgerMenuBtn.addEventListener("click", function () {
-    document.querySelector(".burgerMenu").classList.toggle("active");
-  });
-
-  document.addEventListener("click", function (event) {
-    if (
-      !burgerMenu.contains(event.target) &&
-      !burgerMenuBtn.contains(event.target)
-    ) {
-      burgerMenu.classList.remove("active");
-    }
-  });
-}
-export { burgerFunction };
-
 // TOGGLE FILTERLIST
 function navFilterToggle() {
   const btn = document.querySelector("#filterBtnOpenClose");
@@ -119,9 +99,9 @@ function preventSubDefaultReload() {
       subBtn.value = "Subscribed";
       subInput.value = "";
       subInput.style.borderLeft = "8px solid lightgreen";
-      subInput.placeholder = "You have signed up for our newsletter";
+      subInput.placeholder = "Newsletter on its way!";
     } else {
-      subInput.placeholder = "Please provide valid email address";
+      subInput.placeholder = "Please provide valid email";
       subInput.value = "";
       subInput.style.borderLeft = "8px solid red";
       subBtn.style.color = "red";

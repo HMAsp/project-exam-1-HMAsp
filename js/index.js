@@ -1,8 +1,6 @@
-import { burgerFunction } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
 import { formatDateString } from "./global/functions.js";
 import { navFilterToggle } from "./global/functions.js";
-burgerFunction();
 preventSubDefaultReload();
 navFilterToggle();
 

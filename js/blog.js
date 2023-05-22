@@ -1,4 +1,3 @@
-import { burgerFunction } from "./global/functions.js";
 import { formatDateString } from "./global/functions.js";
 import { subInputs } from "./global/functions.js";
 import { preventSubDefaultReload } from "./global/functions.js";
@@ -7,7 +6,6 @@ import { pictureGrabber } from "./global/functions.js";
 
 preventSubDefaultReload();
 subInputs();
-burgerFunction();
 navFilterToggle();
 
 const baseUrl = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts";
