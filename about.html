@@ -14,16 +14,21 @@
     <link rel="stylesheet" href="css/aboutAndContact.css" />
     <script src="js/about.js" type="module"></script>
     <!-- Hotjar Tracking Code for Inside the trip - "once upon a time" -->
-<script>
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:3486934,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 3486934, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
     <title>Inside the trip | ABOUT</title>
   </head>
   <body>
@@ -94,7 +99,9 @@
             <ul>
               <li class="listItem"><a href="index.html">HOME</a></li>
               <li class="listItem"><a href="blog.html">BLOG</a></li>
-              <li class="listItem"><a class="active" href="about.html">ABOUT US</a></li>
+              <li class="listItem">
+                <a class="active" href="about.html">ABOUT US</a>
+              </li>
               <li class="listItem"><a href="contact.html">CONTACT</a></li>
             </ul>
           </div>
@@ -109,24 +116,18 @@
             Subscribe to our newsletter to get notified when new posts are
             published.
           </p>
-        <form action="submit"></form>
           <input
             class="subInput"
             id="subInput"
             type="text"
             placeholder="Email address"
           />
-          <input
-            class="subButton"
-            type="submit"
-            value="Subscribe"
-          />
+          <input class="subButton" type="submit" value="Subscribe" />
           <span class="subInputCheckmark"
             ><img
               src="images/carbon_checkmark-outline.png"
               alt="checkmark symbol"
           /></span>
-        </form>
         </div>
         <div class="letterBoxCont">
           <a href="contact.html"
