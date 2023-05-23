@@ -4,10 +4,12 @@
 
 ### Description
 
-This is my exam project 1 for my fornt-end development studies. It is a blog page created for this reason and everything you read and see is fictional. This site uses wordpress REST API to fetch its content. This project is made to showcase the capabilities and skills we have acquired over this first year of studies.
+This is my exam project 1 for my front-end development studies. It is a blog page created for this reason and everything you read and see is fictional. This site uses wordpress REST API to fetch its content. This project is made to showcase the capabilities and skills we have acquired over this first year of studies.
 
 All images are from unsplash and icons from iconify and all images have the author in the file name.
 ChatGPT has been used to egenerate blog texts to make it more involving than simply using lorem ipsum.
+
+It is my own design developed by my self using vanilla HTML, CSS and Javascript.
 
 I hope you enjoy and thank you for looking!
 
