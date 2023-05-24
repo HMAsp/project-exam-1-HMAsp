@@ -15,8 +15,6 @@ const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
-console.log(id);
-
 const url = "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/posts/";
 
 // FETCHES THE URL WITH THE ADDED ID TO GET THE SPECIFIC POST
@@ -30,7 +28,8 @@ async function fetchSinglePost() {
 
 const container = document.querySelector(".blogDetailContainer");
 const setTitle = document.querySelector(".blogPageTitle");
-
+const formField = document.getElementById("commentForm");
+const formReset = formField.innerHTML;
 let loader = document.querySelector(".carouselContainer");
 
 // DISPLAYS THE POST CONTENT
@@ -153,7 +152,6 @@ async function createComment() {
   const authorName = nameInput.value;
   const commentContent = commentInput.value;
   const email = emailInput.value;
-  console.log(id);
 
   const commentObject = {
     post: id,
@@ -230,7 +228,11 @@ async function fetchComments() {
 // CHECKS IF COMMENT IDS AND POST ID MATCH. IF TRUE THEY ARE DISPLAYED
 function displayComment(comment) {
   if (comment.post == id) {
-    console.log("Post matches ID:", comment.post);
+    console.log(
+      "Comment ID matches Blog ID:",
+      comment.post,
+      "Displaying comments"
+    );
 
     const commentBox = document.createElement("div");
     commentBox.classList.add("commentBox");
@@ -293,7 +295,7 @@ async function awaitFetchComments() {
 
 awaitFetchComments();
 
-// CLEARS COMMENT CONTAINER, REBUILDS CONTAINER HEAD AND RERUNS DISPLAY COMMENT FUNTION TO DISPLAY NEW COMMENT.
+// CLEARS COMMENT CONTAINER, REBUILDS CONTAINER HEAD AND RERUNS DISPLAY COMMENT FUNTION TO DISPLAY NEW COMMENT AND RESETS FORM TO ADD MORE COMMETS WITHOUT REFRESHING THE PAGE.
 async function reloadComments() {
   const commentContainer = document.querySelector(".commentContainer");
   const data = awaitFetchComments();
@@ -307,9 +309,21 @@ async function reloadComments() {
   commentContHead.append(h4);
   const h5 = document.createElement("h5");
   h5.classList.add("addCommentTextBtn");
-  h5.innerText = "add comment";
+  h5.innerText = "click to add another";
   commentContHead.append(h5);
 
   commentContainer.append(commentContHead);
   displayComments(data);
+
+  h5.addEventListener("click", function () {
+    const formField = document.getElementById("commentForm");
+    formField.innerHTML = "";
+    formField.innerHTML = formReset;
+    formField.classList.toggle("showCommentForm");
+    if (formField.classList.contains("showCommentForm")) {
+      h5.innerText = "close comment";
+    } else {
+      h5.innerText = "add comment";
+    }
+  });
 }

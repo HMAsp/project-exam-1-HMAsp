@@ -67,7 +67,7 @@
       <div class="carouselContainer"><span class="loader">Loading</span></div>
       <div class="blogDetailContainer"></div>
       <section>
-        <form action="#" class="addCommentForm">
+        <form action="#" class="addCommentForm" id="commentForm">
           <div class="commentNameCont">
             <h5 class="commentErrorMessage">
               Please check that your information is correct
@@ -94,7 +94,7 @@
             />
           </div>
           <div class="commentTextCont">
-            <label for="yourName" class="addCommentLabels">Comment</label>
+            <label for="comment" class="addCommentLabels">Comment</label>
             <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
           </div>
           <div class="addCommentCont">
@@ -143,6 +143,7 @@
             Subscribe to our newsletter to get notified when new posts are
             published.
           </p>
+          <label for="subInput" style="display: none">Sub input</label>
           <input
             class="subInput"
             id="subInput"
