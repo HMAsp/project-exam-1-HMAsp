@@ -174,7 +174,7 @@ async function createComment() {
     .then(function (response) {
       if (response.ok && validateEmail(email)) {
         formField.innerHTML = `<h5 class="commentThanks">Thank you for leaving a comment</h5>`;
-
+        reloadComments();
         return response.json();
       } else {
         formErrorHandler();
@@ -292,3 +292,24 @@ async function awaitFetchComments() {
 }
 
 awaitFetchComments();
+
+// CLEARS COMMENT CONTAINER, REBUILDS CONTAINER HEAD AND RERUNS DISPLAY COMMENT FUNTION TO DISPLAY NEW COMMENT.
+async function reloadComments() {
+  const commentContainer = document.querySelector(".commentContainer");
+  const data = awaitFetchComments();
+
+  commentContainer.innerHTML = "";
+  const commentContHead = document.createElement("div");
+  commentContHead.style.display = "flex";
+  commentContHead.classList.add("commentContHead");
+  const h4 = document.createElement("h4");
+  h4.innerText = "comments";
+  commentContHead.append(h4);
+  const h5 = document.createElement("h5");
+  h5.classList.add("addCommentTextBtn");
+  h5.innerText = "add comment";
+  commentContHead.append(h5);
+
+  commentContainer.append(commentContHead);
+  displayComments(data);
+}
