@@ -184,6 +184,28 @@ a {
   }
 }
 
+/* COMMENT LOADING INDICATOR */
+.commentLoader {
+  margin: auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: none;
+  border-top: 3px solid #fff;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .recentPostTitle {
   color: var(--text);
   text-align: center;
@@ -685,4 +707,11 @@ figure img {
 
 .show {
   display: block;
+}
+
+.copyright {
+  color: var(--text);
+  text-align: center;
+  font-weight: 300;
+  font-size: 0.8rem;
 }

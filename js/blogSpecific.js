@@ -29,7 +29,8 @@ async function fetchSinglePost() {
 const container = document.querySelector(".blogDetailContainer");
 const setTitle = document.querySelector(".blogPageTitle");
 const formField = document.getElementById("commentForm");
-const formReset = formField.innerHTML;
+let commentLoader = document.querySelector(".commentLoader");
+
 let loader = document.querySelector(".carouselContainer");
 
 // DISPLAYS THE POST CONTENT
@@ -175,7 +176,6 @@ async function createComment() {
         reloadComments();
         return response.json();
       } else {
-        formErrorHandler();
         throw new Error("Error creating comment");
       }
     })
@@ -189,7 +189,10 @@ async function createComment() {
 
 postBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  createComment();
+  if (formErrorHandler()) {
+    commentLoader.style.display = "inline-block";
+    createComment();
+  }
 });
 
 // COMMENTS FORM VALIDATOR
@@ -212,6 +215,8 @@ function formErrorHandler() {
   if (commentInput.value == "") {
     (formError.innerText = "Please write a comment"),
       (formError.style.display = "flex");
+  } else {
+    return true;
   }
 }
 
@@ -295,7 +300,7 @@ async function awaitFetchComments() {
 
 awaitFetchComments();
 
-// CLEARS COMMENT CONTAINER, REBUILDS CONTAINER HEAD AND RERUNS DISPLAY COMMENT FUNTION TO DISPLAY NEW COMMENT AND RESETS FORM TO ADD MORE COMMETS WITHOUT REFRESHING THE PAGE.
+// CLEARS COMMENT CONTAINER, REBUILDS CONTAINER HEAD AND RERUNS DISPLAY COMMENT FUNTION TO DISPLAY NEW COMMENTS
 async function reloadComments() {
   const commentContainer = document.querySelector(".commentContainer");
   const data = awaitFetchComments();
@@ -309,21 +314,9 @@ async function reloadComments() {
   commentContHead.append(h4);
   const h5 = document.createElement("h5");
   h5.classList.add("addCommentTextBtn");
-  h5.innerText = "click to add another";
+  h5.innerText = "";
   commentContHead.append(h5);
 
   commentContainer.append(commentContHead);
   displayComments(data);
-
-  h5.addEventListener("click", function () {
-    const formField = document.getElementById("commentForm");
-    formField.innerHTML = "";
-    formField.innerHTML = formReset;
-    formField.classList.toggle("showCommentForm");
-    if (formField.classList.contains("showCommentForm")) {
-      h5.innerText = "close comment";
-    } else {
-      h5.innerText = "add comment";
-    }
-  });
 }
