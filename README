@@ -9,9 +9,24 @@ This is my exam project 1 for my front-end development studies. It is a blog pag
 All images are from unsplash and icons from iconify and all images have the author in the file name.
 ChatGPT has been used to egenerate blog texts to make it more involving than simply using lorem ipsum.
 
-It is my own design developed by my self using vanilla HTML, CSS and Javascript.
+It is my own design developed by my self using only figma, Wordpress REST API, HTML, CSS and Javascript.
 
 I hope you enjoy and thank you for looking!
+
+### Changelog
+
+After feedback from hotjar and fellow students I hav changed the navigation. I initially designed a burger menu that was intended to be this sites nav but after the feedback about the page being difficult to navigate I have changed this to a fixed top navigation bar. It came out looking very good and it greatly improves the sites navigation.
+
+For the blog page I have changed the designed 1 picture layout to multiple pictures because I misread the brief about having a modal on the specific page and the brief was using the wording "images" and not "image". The layout is mostly the same but more images has been added and a modal using the dialog element is in place.
+
+### Brief level 2 info:
+
+1. Filter:I have made a drop down menu on hover on the nav bar. Clicking these continents will pass a category to the blog page and filter the result.
+
+2. Figuring out how to post the contact form to wordpress API was quite challenging. I ended up with using plugins called contact form 7 and flamingo. CF7 gave me an endpoint I could call to POST and flamingo was needed to actually see the stored forms in wordpress. Otherwise it would only send emails and show how many forms had been sent by who.
+   I used this newfound knowledge to make the newsletter app on the footer work. This only passes the email so the code creates the required your-name and your-subject to get around this block. Now you can simply input your email and click go. email validation in place on this too of course.
+
+3. Comment form. The comment form located on the specific page posts the comments to wordpress. I have made it so it passes the blog post ID as the "post" field. This way I could make the filter work. On page load it will filter comments so only the corresponing comments are displayed on the blog post. Adding a new comment will reload the comment display to show the new comment also.
 
 # Links
 
