@@ -161,8 +161,6 @@ async function createComment() {
     content: commentContent,
   };
 
-  console.log(commentObject);
-
   fetch(postUrl, {
     method: "POST",
     headers: {
@@ -233,12 +231,6 @@ async function fetchComments() {
 // CHECKS IF COMMENT IDS AND POST ID MATCH. IF TRUE THEY ARE DISPLAYED
 function displayComment(comment) {
   if (comment.post == id) {
-    console.log(
-      "Comment ID matches Blog ID:",
-      comment.post,
-      "Displaying comments"
-    );
-
     const commentBox = document.createElement("div");
     commentBox.classList.add("commentBox");
 

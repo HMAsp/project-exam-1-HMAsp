@@ -33,9 +33,7 @@ function categoryParamHandler() {
 // FETCHES THE ARRAY
 async function fetchPosts(url) {
   const response = await fetch(url);
-
   const posts = await response.json();
-  console.log(url);
 
   return posts;
 }

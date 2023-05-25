@@ -89,7 +89,6 @@ function preventSubDefaultReload() {
   const subBtn = document.querySelector(".subButton");
   subBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("Valid email address:", validateEmail(subInput.value));
 
     if (validateEmail(subInput.value)) {
       // POST EMAIL TO WP

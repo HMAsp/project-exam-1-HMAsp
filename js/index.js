@@ -28,8 +28,6 @@ const enterBtn = document.querySelector("#enterBtn");
 
 // CREATES AND DISPLAYS THE CAROUSEL POSTS.
 function renderPost(post) {
-  console.log("recent post:" + " " + post.slug);
-
   loaderInd.style.display = "none";
   const image = post.jetpack_featured_media_url;
   const postTitle = `"` + post.title.rendered + `"`;
