@@ -82,11 +82,11 @@ function validateForm() {
     checkLength(subject.value, 14) &&
     checkLength(message.value, 25)
   ) {
-    console.log("Validation success");
+    console.log("Form validation success");
     showHideMessage();
     return true;
   } else {
-    console.log("Incomplete");
+    console.log("Error: The form is incomplete");
     return false;
   }
 }

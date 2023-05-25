@@ -31,7 +31,7 @@ function navFilterToggle() {
   europe.addEventListener("click", function () {
     document.location = "../../blog.html?categories=1";
   });
-  document.addEventListener("mouseout", function (event) {
+  document.addEventListener("click", function (event) {
     if (!filterDisplay.contains(event.target) && !btn.contains(event.target)) {
       filterDisplay.classList.add("filterListClosed");
     }
