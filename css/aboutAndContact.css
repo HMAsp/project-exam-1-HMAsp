@@ -119,7 +119,7 @@ input:-webkit-autofill {
 }
 
 .confirmationDisplay {
-  display: block;
+  display: hidden;
   z-index: 5;
   max-width: 400px;
   min-height: 400px;
@@ -130,6 +130,16 @@ input:-webkit-autofill {
   background-size: cover;
   background-repeat: no-repeat;
   transition: 2s ease-in-out;
+  scale: 0;
+  opacity: 0;
+}
+
+.confirmShow {
+  display: block;
+  scale: 1;
+  opacity: 1;
+  border-radius: 0%;
+  transition: 4s ease-in-out;
 }
 
 .confirmationDisplay p {
@@ -138,7 +148,9 @@ input:-webkit-autofill {
 }
 
 .confirmationCont {
-  display: none;
+  display: hidden;
+  scale: 0;
+  opacity: 0;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -150,5 +162,13 @@ input:-webkit-autofill {
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
-  transition: 2s ease-in-out;
+  border-radius: 100%;
+}
+
+.contShow {
+  display: flex;
+  scale: 1;
+  opacity: 1;
+  border-radius: 0%;
+  transition: 0.5s ease-in-out;
 }

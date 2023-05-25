@@ -139,7 +139,12 @@ function postFormData() {
 // IF FORM IS COMPLETE AND SENT THIS FUNCTION SHOWS THE CONFIMATION MESSAGE, REMOVES IT AFTER A DELAY AND RELOADS THE PAGE
 function showHideMessage() {
   const container = document.querySelector(".confirmationCont");
-  container.style.display = "flex";
+  const message = document.querySelector(".confirmationDisplay");
+
+  // container.style.display = "flex";
+  container.classList.add("contShow");
+  message.classList.add("confirmShow");
+  // message.style.display = "block";
 
   setTimeout(function () {
     window.location.reload();
