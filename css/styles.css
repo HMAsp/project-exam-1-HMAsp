@@ -585,7 +585,6 @@ figure img {
 
 .commentBox {
   max-width: 740px;
-  /* min-width: 320px; */
   min-height: 100px;
   background-color: var(--darkBg);
   margin: 20px;
@@ -630,7 +629,6 @@ figure img {
 .required {
   font-weight: 300;
   font-size: 0.8rem;
-  /* font-style: italic; */
 }
 
 .commentThanks {
@@ -660,6 +658,11 @@ figure img {
   border-top: 0.5px solid white;
   border-radius: 25px 25px 0px 0px;
   flex-wrap: wrap;
+}
+
+.socialNpages {
+  display: flex;
+  gap: 50px;
 }
 
 .subscribeText {
