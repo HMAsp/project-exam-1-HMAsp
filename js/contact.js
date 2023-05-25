@@ -10,12 +10,6 @@ navFilterToggle();
 
 const formContainer = document.querySelector(".formContainer");
 const fullName = document.querySelector("#name");
-
-const nameCheckmark = document.querySelector(".nameCheckmark");
-const emailCheckmark = document.querySelector(".emailCheckmark");
-const subjectCheckmark = document.querySelector(".subjectCheckmark");
-const messageCheckmark = document.querySelector(".messageCheckmark");
-
 const email = document.querySelector("#email");
 const subject = document.querySelector("#subject");
 const message = document.querySelector(".formMsg");
@@ -143,7 +137,6 @@ function showHideMessage() {
   container.classList.add("contShow");
   message.classList.add("confirmShow");
   // message.style.display = "block";
-
   setTimeout(function () {
     window.location.reload();
   }, 7000);

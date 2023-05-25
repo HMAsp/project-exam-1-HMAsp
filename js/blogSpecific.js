@@ -140,7 +140,7 @@ openComment.addEventListener("click", function (event) {
   }
 });
 
-// POSTING COMMENTS TO WP AND FETCHING STORED COMMENTS TO DISPLAY THEM
+// CREATES COMMENT OBJECT AND POST COMMENTS TO WP
 const postBtn = document.querySelector(".addCommentBtn");
 const postUrl =
   "https://codewithspooks.com/insidethetrip/wp-json/wp/v2/comments";

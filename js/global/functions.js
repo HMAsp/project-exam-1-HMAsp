@@ -84,6 +84,7 @@ function formatDateString(apiDate) {
 }
 export { formatDateString };
 
+// POST NEWSLETTER EMAIL TO WP
 function preventSubDefaultReload() {
   const subInput = document.querySelector(".subInput");
   const subBtn = document.querySelector(".subButton");
@@ -91,8 +92,6 @@ function preventSubDefaultReload() {
     event.preventDefault();
 
     if (validateEmail(subInput.value)) {
-      // POST EMAIL TO WP
-
       postFormData(subInput.value);
       subBtn.style.color = "lightgreen";
       subBtn.value = "Subscribed";

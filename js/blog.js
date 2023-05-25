@@ -83,7 +83,7 @@ function renderPost(post) {
   pContainer.append(title);
   pContainer.append(descript);
 
-  // INJECTS LOAD MORE BTN BEFORE EXISTING DIV IN HTML
+  // ADDS LOAD MORE BUTTON TO THE END OF THE BLOG DISPLAY
   loadMoreCont.insertAdjacentElement("beforebegin", blogContainer);
   loadMoreCont.style.display = "flex";
 }
