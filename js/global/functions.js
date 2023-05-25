@@ -6,9 +6,9 @@ function navFilterToggle() {
   const america = document.querySelector(".america");
   const africa = document.querySelector(".africa");
   const europe = document.querySelector(".europe");
+  const filterDisplay = document.querySelector("#filterDisplay");
 
   btn.addEventListener("mouseover", function () {
-    const filterDisplay = document.querySelector("#filterDisplay");
     filterDisplay.classList.remove("filterListClosed");
   });
 
@@ -31,7 +31,7 @@ function navFilterToggle() {
   europe.addEventListener("click", function () {
     document.location = "../../blog.html?categories=1";
   });
-  document.addEventListener("click", function (event) {
+  document.addEventListener("mouseout", function (event) {
     if (!filterDisplay.contains(event.target) && !btn.contains(event.target)) {
       filterDisplay.classList.add("filterListClosed");
     }
