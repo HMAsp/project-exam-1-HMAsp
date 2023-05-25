@@ -21,12 +21,12 @@ For the blog page I have changed the designed 1 picture layout to multiple pictu
 
 ### Brief level 2 info:
 
-1. Filter:I have made a drop down menu on hover on the nav bar. Clicking these continents will pass a category to the blog page and filter the result.
+1. Filter:I have made a drop down menu on hover on the nav bar. Clicking these continents will pass a category to the blog page and filter the result. This drop down has a click outside close also because I could not get the mouseout to work with mobile and the swipe close was far to sensitive and made it really difficult to hit the buttons before it closed.
 
 2. Figuring out how to post the contact form to wordpress API was quite challenging. I ended up with using plugins called contact form 7 and flamingo. CF7 gave me an endpoint I could call to POST and flamingo was needed to actually see the stored forms in wordpress. Otherwise it would only send emails and show how many forms had been sent by who.
    I used this newfound knowledge to make the newsletter app on the footer work. This only passes the email so the code creates the required your-name and your-subject to get around this block. Now you can simply input your email and click go. email validation in place on this too of course.
 
-3. Comment form. The comment form located on the specific page posts the comments to wordpress. I have made it so it passes the blog post ID as the "post" field. This way I could make the filter work. On page load it will filter comments so only the corresponing comments are displayed on the blog post. Adding a new comment will reload the comment display to show the new comment also.
+3. Comment form. The comment form located on the specific page posts the comments to wordpress. I have made it so it passes the blog post ID as the "post" field. This way I could make the filter work. On page load it will filter comments so only the corresponing comments are displayed on the blog post. Adding a new comment will reload the comment display to show the new comment also. I did not figure out how to get the "liked" and heart to work and store so I have made it static and all comments are liked and hearted.
 
 # Links
 
