@@ -4,7 +4,8 @@
   "description": "![header](images/killian-pham-j0DrLBZH0nE-unsplash_dt_header_text.png)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test-unit",
+    "test-unit": "jest"
   },
   "keywords": [],
   "author": "HMA",
