@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "HMA",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.2.0"
+  }
 }
