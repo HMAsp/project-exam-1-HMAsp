@@ -1,0 +1,20 @@
+{
+  "name": "project-exam-1",
+  "version": "1.0.0",
+  "description": "![header](images/killian-pham-j0DrLBZH0nE-unsplash_dt_header_text.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test-unit",
+    "test-unit": "jest"
+  },
+  "keywords": [],
+  "author": "HMA",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "eslint": "^8.52.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.2.0"
+  }
+}
